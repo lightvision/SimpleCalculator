@@ -19,15 +19,16 @@ import routmmariusionel.resources.LanguageManager;
 public class SimpleCalculator extends javax.swing.JFrame {
 
     // Listele de butoane invalide pentru fiecare tip de calculator
-    private final List<JButton> distanceCalculatorInvalidButtons;
-    private final List<JButton> temperatureCalculatorInvalidButtons;
+    private final List<String> distanceCalculatorInvalidButtons = Arrays.asList("jButton5", "jButtonAdd");
+    private final List<String> temperatureCalculatorInvalidButtons = Arrays.asList("jButton5", "jButtonAdd");
+
 
     /**
      * Creates new form CalculatorSimplu
      */
     public SimpleCalculator() {
-        this.temperatureCalculatorInvalidButtons = Arrays.asList(jButton5);
-        this.distanceCalculatorInvalidButtons = Arrays.asList(jButton5);
+//        this.temperatureCalculatorInvalidButtons = Arrays.asList("");
+//        this.distanceCalculatorInvalidButtons = Arrays.asList(jButton5);
         initComponents();
 
         // Localizarea textelor
@@ -773,15 +774,15 @@ public class SimpleCalculator extends javax.swing.JFrame {
     }
 
     private void moveButtons(javax.swing.JPanel sourcePanel, javax.swing.JPanel destinationPanel, String calculatorType) {
-        // Listele de butoane invalide în funcție de tipul de calculator
-        List<JButton> invalidButtons = switch (calculatorType) {
-            case "DistanceCalculator" ->
-                distanceCalculatorInvalidButtons;
-            case "TemperatureCalculator" ->
-                temperatureCalculatorInvalidButtons;
-            default ->
-                Collections.emptyList(); // Nicio dezactivare pentru calculatorul principal
-        };
+        // Determinăm lista de butoane invalide pe baza tipului de calculator
+    List<String> invalidButtons;
+    if ("DistanceCalculator".equals(calculatorType)) {
+        invalidButtons = distanceCalculatorInvalidButtons;
+    } else if ("TemperatureCalculator".equals(calculatorType)) {
+        invalidButtons = temperatureCalculatorInvalidButtons;
+    } else {
+        invalidButtons = Collections.emptyList(); // Nicio dezactivare pentru calculatorul principal
+    }
 
         // Iterează prin componentele din sourcePanel
         java.awt.Component[] components = sourcePanel.getComponents();
@@ -797,9 +798,9 @@ public class SimpleCalculator extends javax.swing.JFrame {
                 // Verificăm dacă numele butonului este în lista de butoane invalide
                 String buttonName = button.getName();
                 if (buttonName!=null){
-                    System.out.println(buttonName);
+//                    System.out.println(buttonName);
                     if(invalidButtons.contains(buttonName)){
-                        System.out.println("FOOOOOO");
+                        button.setEnabled(false);
                     }
                 }
             }
