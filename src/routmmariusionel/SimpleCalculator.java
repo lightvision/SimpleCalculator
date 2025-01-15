@@ -585,40 +585,36 @@ public class SimpleCalculator extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonOKActionPerformed
 
     private void jRadioMenuDistanceCalculatorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioMenuDistanceCalculatorActionPerformed
-        // transmitem meniul ferestrei principale la fereastra de Calculator distanta
-        jFrameDistanceCalculator.setJMenuBar(this.getJMenuBar());
-        jFrameDistanceCalculator.pack();
-
         // ascundem toate ferestrele
         hideAllWindows();
-
-        // mutam butoanele de calculator in fereastra de Calculator Distanrta
-        moveButtons(this.jPanelButtons, this.jPanelDCContainer, "DistanceCalculator");
+        
+        // ne asigram ca mutam meniul principal in fereastra DistanceCalculator
+        jFrameDistanceCalculator.setJMenuBar(this.getJMenuBar());
+        jFrameDistanceCalculator.pack();
 
         // afisam calculatorul de distanta
         jFrameDistanceCalculator.setVisible(true);
     }//GEN-LAST:event_jRadioMenuDistanceCalculatorActionPerformed
 
     private void jRadioMenuSimpleCalculatorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioMenuSimpleCalculatorActionPerformed
-//        // transmitem meniul ferestrei principale la fereastra de Calculator distanta
-//        jFrameDistanceCalculator.setVisible(true);
-//        jFrameDistanceCalculator.pack();
-
         // ascundem toate ferestrele
         hideAllWindows();
+        
+        // ne asiguram ca avem meniul principal in fereastra SimpleCalculator
         this.setJMenuBar(this.getJMenuBar());
         this.pack();
+        
         // afisam calculatorul simplu
         this.setVisible(true);
     }//GEN-LAST:event_jRadioMenuSimpleCalculatorActionPerformed
 
     private void jRadioMenuTemperatureCalculatorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioMenuTemperatureCalculatorActionPerformed
-        // transmitem meniul ferestrei principale la fereastra de Calculator distanta
-        jFrameTemperatureCalculator.setJMenuBar(this.getJMenuBar());
-        jFrameTemperatureCalculator.pack();
-
         // ascundem toate ferestrele
         hideAllWindows();
+        
+        // ne asigram ca mutam meniul principal in fereastra TemperatureCalculator
+        jFrameTemperatureCalculator.setJMenuBar(this.getJMenuBar());
+        jFrameTemperatureCalculator.pack();
 
         // afisam calculatorul de distanta
         jFrameTemperatureCalculator.setVisible(true);
@@ -723,6 +719,10 @@ public class SimpleCalculator extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldMiles;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     * Functie care actualizeaza textele componentelor cu valorile preluate din localizare
+     * TODO trebuie refactorizata si sa includa toate textele
+     */
     private void updateAllTexts() {
         // Actualizăm mai întâi elementele de meniu
 //    System.out.println("routmmariusionel.SimpleCalculator.updateAllTexts()");
@@ -756,6 +756,9 @@ public class SimpleCalculator extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * Ascundem toate ferestrele Aplicatiei de Calculator
+     */
     private void hideAllWindows() {
         for (Frame frame : Frame.getFrames()) {
             if (frame.isVisible()) {
