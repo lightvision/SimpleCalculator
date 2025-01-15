@@ -4,6 +4,7 @@
  */
 package routmmariusionel;
 
+import java.awt.Frame;
 import routmmariusionel.resources.LanguageManager;
 
 /**
@@ -42,19 +43,50 @@ public class SimpleCalculator extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextAreaAboutCalculator = new javax.swing.JTextArea();
         jButtonOK = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
+        jFrameDistanceCalculator = new javax.swing.JFrame();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jTextFieldMiles = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jTextFieldKilometers = new javax.swing.JTextField();
+        jPanelDCContainer = new javax.swing.JPanel();
+        jFrameTemperatureCalculator = new javax.swing.JFrame();
+        jPanel3 = new javax.swing.JPanel();
+        jButton6 = new javax.swing.JButton();
+        jPanelSimpleCalculator = new javax.swing.JPanel();
         jTextField1 = new javax.swing.JTextField();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jRadioButtonMenuItem1 = new javax.swing.JRadioButtonMenuItem();
-        jRadioButtonMenuItem2 = new javax.swing.JRadioButtonMenuItem();
-        jRadioButtonMenuItem3 = new javax.swing.JRadioButtonMenuItem();
+        jPanelButtons = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        jButton21 = new javax.swing.JButton();
+        jButton22 = new javax.swing.JButton();
+        jButton24 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton23 = new javax.swing.JButton();
+        jButton25 = new javax.swing.JButton();
+        jButton26 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton27 = new javax.swing.JButton();
+        jButton28 = new javax.swing.JButton();
+        jButton29 = new javax.swing.JButton();
+        jButton30 = new javax.swing.JButton();
+        jButton31 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton32 = new javax.swing.JButton();
+        jButton33 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jButton34 = new javax.swing.JButton();
+        jButton35 = new javax.swing.JButton();
+        jMenuBar = new javax.swing.JMenuBar();
+        jMenuCalculator = new javax.swing.JMenu();
+        jRadioMenuSimpleCalculator = new javax.swing.JRadioButtonMenuItem();
+        jRadioMenuDistanceCalculator = new javax.swing.JRadioButtonMenuItem();
+        jRadioMenuTemperatureCalculator = new javax.swing.JRadioButtonMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jMenuExit = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuSettings = new javax.swing.JMenu();
+        jMenuSettingsLanguage = new javax.swing.JMenuItem();
+        jMenuAbout = new javax.swing.JMenu();
+        jMenuItemAbout = new javax.swing.JMenuItem();
 
         jDialogAboutCalculator.setTitle("Despre calculator");
         jDialogAboutCalculator.setAlwaysOnTop(true);
@@ -110,44 +142,367 @@ public class SimpleCalculator extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jFrameDistanceCalculator.addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                closingDistanceCalculator(evt);
+            }
+        });
 
-        jTextField1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        jTextField1.setText("000000000000000.0");
+        jLabel1.setText("Mile");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        jLabel2.setText("Kilometri");
+
+        javax.swing.GroupLayout jPanelDCContainerLayout = new javax.swing.GroupLayout(jPanelDCContainer);
+        jPanelDCContainer.setLayout(jPanelDCContainerLayout);
+        jPanelDCContainerLayout.setHorizontalGroup(
+            jPanelDCContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 367, Short.MAX_VALUE)
+        );
+        jPanelDCContainerLayout.setVerticalGroup(
+            jPanelDCContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 220, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanelDCContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextFieldMiles))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextFieldKilometers)))
                 .addContainerGap())
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(359, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jTextFieldMiles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jTextFieldKilometers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanelDCContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
-        jMenu1.setText("menu.Calculator");
+        javax.swing.GroupLayout jFrameDistanceCalculatorLayout = new javax.swing.GroupLayout(jFrameDistanceCalculator.getContentPane());
+        jFrameDistanceCalculator.getContentPane().setLayout(jFrameDistanceCalculatorLayout);
+        jFrameDistanceCalculatorLayout.setHorizontalGroup(
+            jFrameDistanceCalculatorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jFrameDistanceCalculatorLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jFrameDistanceCalculatorLayout.setVerticalGroup(
+            jFrameDistanceCalculatorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jFrameDistanceCalculatorLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
 
-        buttonGroupCalculatorMenu.add(jRadioButtonMenuItem1);
-        jRadioButtonMenuItem1.setSelected(true);
-        jRadioButtonMenuItem1.setText("menu.Calculator.DistanceCalculator");
-        jMenu1.add(jRadioButtonMenuItem1);
+        jFrameTemperatureCalculator.addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                closeTemperatureCalculator(evt);
+            }
+        });
 
-        buttonGroupCalculatorMenu.add(jRadioButtonMenuItem2);
-        jRadioButtonMenuItem2.setText("menu.Calculator.TemperatureConvertor");
-        jMenu1.add(jRadioButtonMenuItem2);
+        jButton6.setText("Calculator temperartura");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
-        buttonGroupCalculatorMenu.add(jRadioButtonMenuItem3);
-        jRadioButtonMenuItem3.setText("menu.Calculator.TemperatureConvertor");
-        jMenu1.add(jRadioButtonMenuItem3);
-        jMenu1.add(jSeparator1);
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(226, Short.MAX_VALUE)
+                .addComponent(jButton6)
+                .addContainerGap())
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(259, Short.MAX_VALUE)
+                .addComponent(jButton6)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout jFrameTemperatureCalculatorLayout = new javax.swing.GroupLayout(jFrameTemperatureCalculator.getContentPane());
+        jFrameTemperatureCalculator.getContentPane().setLayout(jFrameTemperatureCalculatorLayout);
+        jFrameTemperatureCalculatorLayout.setHorizontalGroup(
+            jFrameTemperatureCalculatorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jFrameTemperatureCalculatorLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jFrameTemperatureCalculatorLayout.setVerticalGroup(
+            jFrameTemperatureCalculatorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jFrameTemperatureCalculatorLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jTextField1.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
+        jTextField1.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+
+        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
+        jButton1.setText("C");
+        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton1.setPreferredSize(new java.awt.Dimension(80, 80));
+
+        jButton21.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
+        jButton21.setText("( )");
+        jButton21.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton21.setPreferredSize(new java.awt.Dimension(80, 80));
+
+        jButton22.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
+        jButton22.setText("%");
+        jButton22.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton22.setPreferredSize(new java.awt.Dimension(80, 80));
+
+        jButton24.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
+        jButton24.setText("/");
+        jButton24.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton24.setPreferredSize(new java.awt.Dimension(80, 80));
+
+        jButton2.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
+        jButton2.setText("7");
+        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton2.setPreferredSize(new java.awt.Dimension(80, 80));
+
+        jButton23.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
+        jButton23.setText("8");
+        jButton23.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton23.setPreferredSize(new java.awt.Dimension(80, 80));
+
+        jButton25.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
+        jButton25.setText("9");
+        jButton25.setToolTipText("");
+        jButton25.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton25.setPreferredSize(new java.awt.Dimension(80, 80));
+
+        jButton26.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
+        jButton26.setText("X");
+        jButton26.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton26.setPreferredSize(new java.awt.Dimension(80, 80));
+
+        jButton3.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
+        jButton3.setText("4");
+        jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton3.setPreferredSize(new java.awt.Dimension(80, 80));
+
+        jButton27.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
+        jButton27.setText("5");
+        jButton27.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton27.setPreferredSize(new java.awt.Dimension(80, 80));
+
+        jButton28.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
+        jButton28.setText("6");
+        jButton28.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton28.setPreferredSize(new java.awt.Dimension(80, 80));
+
+        jButton29.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
+        jButton29.setText("-");
+        jButton29.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton29.setPreferredSize(new java.awt.Dimension(80, 80));
+
+        jButton30.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
+        jButton30.setText("+");
+        jButton30.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton30.setPreferredSize(new java.awt.Dimension(80, 80));
+
+        jButton31.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
+        jButton31.setText("3");
+        jButton31.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton31.setPreferredSize(new java.awt.Dimension(80, 80));
+
+        jButton4.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
+        jButton4.setText("1");
+        jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton4.setPreferredSize(new java.awt.Dimension(80, 80));
+
+        jButton32.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
+        jButton32.setText("2");
+        jButton32.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton32.setPreferredSize(new java.awt.Dimension(80, 80));
+
+        jButton33.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
+        jButton33.setText("=");
+        jButton33.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton33.setPreferredSize(new java.awt.Dimension(80, 80));
+
+        jButton5.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
+        jButton5.setText("+/-");
+        jButton5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton5.setPreferredSize(new java.awt.Dimension(80, 80));
+
+        jButton34.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
+        jButton34.setText("0");
+        jButton34.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton34.setPreferredSize(new java.awt.Dimension(80, 80));
+
+        jButton35.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
+        jButton35.setText(",");
+        jButton35.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton35.setPreferredSize(new java.awt.Dimension(80, 80));
+
+        javax.swing.GroupLayout jPanelButtonsLayout = new javax.swing.GroupLayout(jPanelButtons);
+        jPanelButtons.setLayout(jPanelButtonsLayout);
+        jPanelButtonsLayout.setHorizontalGroup(
+            jPanelButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelButtonsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelButtonsLayout.createSequentialGroup()
+                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton21, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton22, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton24, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE))
+                    .addGroup(jPanelButtonsLayout.createSequentialGroup()
+                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton23, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton25, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton26, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE))
+                    .addGroup(jPanelButtonsLayout.createSequentialGroup()
+                        .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton27, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton28, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton29, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE))
+                    .addGroup(jPanelButtonsLayout.createSequentialGroup()
+                        .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton32, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton31, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton30, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE))
+                    .addGroup(jPanelButtonsLayout.createSequentialGroup()
+                        .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton34, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton35, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton33, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanelButtonsLayout.setVerticalGroup(
+            jPanelButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelButtonsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton26, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton27, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton28, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton32, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton31, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton30, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton34, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton35, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton33, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout jPanelSimpleCalculatorLayout = new javax.swing.GroupLayout(jPanelSimpleCalculator);
+        jPanelSimpleCalculator.setLayout(jPanelSimpleCalculatorLayout);
+        jPanelSimpleCalculatorLayout.setHorizontalGroup(
+            jPanelSimpleCalculatorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelSimpleCalculatorLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelSimpleCalculatorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanelButtons, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jTextField1))
+                .addContainerGap())
+        );
+        jPanelSimpleCalculatorLayout.setVerticalGroup(
+            jPanelSimpleCalculatorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelSimpleCalculatorLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTextField1)
+                .addGap(18, 18, 18)
+                .addComponent(jPanelButtons, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(32, 32, 32))
+        );
+
+        jMenuCalculator.setText("menu.Calculator");
+
+        buttonGroupCalculatorMenu.add(jRadioMenuSimpleCalculator);
+        jRadioMenuSimpleCalculator.setSelected(true);
+        jRadioMenuSimpleCalculator.setText("menu.Calculator.SimpleCalculator");
+        jRadioMenuSimpleCalculator.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioMenuSimpleCalculatorActionPerformed(evt);
+            }
+        });
+        jMenuCalculator.add(jRadioMenuSimpleCalculator);
+
+        buttonGroupCalculatorMenu.add(jRadioMenuDistanceCalculator);
+        jRadioMenuDistanceCalculator.setText("menu.Calculator.DistanceCalculator");
+        jRadioMenuDistanceCalculator.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioMenuDistanceCalculatorActionPerformed(evt);
+            }
+        });
+        jMenuCalculator.add(jRadioMenuDistanceCalculator);
+
+        buttonGroupCalculatorMenu.add(jRadioMenuTemperatureCalculator);
+        jRadioMenuTemperatureCalculator.setText("menu.Calculator.TemperatureConvertor");
+        jRadioMenuTemperatureCalculator.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioMenuTemperatureCalculatorActionPerformed(evt);
+            }
+        });
+        jMenuCalculator.add(jRadioMenuTemperatureCalculator);
+        jMenuCalculator.add(jSeparator1);
 
         jMenuExit.setText("menu.Calculator.Exit");
         jMenuExit.addActionListener(new java.awt.event.ActionListener() {
@@ -155,30 +510,30 @@ public class SimpleCalculator extends javax.swing.JFrame {
                 jMenuExitActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuExit);
+        jMenuCalculator.add(jMenuExit);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar.add(jMenuCalculator);
 
-        jMenu3.setText("menu.Settings");
+        jMenuSettings.setText("menu.Settings");
 
-        jMenuItem2.setText("Limba");
-        jMenu3.add(jMenuItem2);
+        jMenuSettingsLanguage.setText("Limba");
+        jMenuSettings.add(jMenuSettingsLanguage);
 
-        jMenuBar1.add(jMenu3);
+        jMenuBar.add(jMenuSettings);
 
-        jMenu2.setText("menu.About");
+        jMenuAbout.setText("menu.About");
 
-        jMenuItem1.setText("menu.About.AboutCalculator");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemAbout.setText("menu.About.AboutCalculator");
+        jMenuItemAbout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                jMenuItemAboutActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem1);
+        jMenuAbout.add(jMenuItemAbout);
 
-        jMenuBar1.add(jMenu2);
+        jMenuBar.add(jMenuAbout);
 
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(jMenuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -186,15 +541,14 @@ public class SimpleCalculator extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanelSimpleCalculator, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanelSimpleCalculator, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -209,16 +563,70 @@ public class SimpleCalculator extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMenuExitActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void jMenuItemAboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAboutActionPerformed
         // afisam modal fereastrs de dialog AboutCalculator
         jDialogAboutCalculator.pack();
         jDialogAboutCalculator.setVisible(true);
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_jMenuItemAboutActionPerformed
 
     private void jButtonOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOKActionPerformed
         // nu are sens sa pastram dialogul in memorie, asa ca folosim dispose()
         jDialogAboutCalculator.dispose();
     }//GEN-LAST:event_jButtonOKActionPerformed
+
+    private void jRadioMenuDistanceCalculatorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioMenuDistanceCalculatorActionPerformed
+        // transmitem meniul ferestrei principale la fereastra de Calculator distanta
+        jFrameDistanceCalculator.setJMenuBar(this.getJMenuBar());
+        jFrameDistanceCalculator.pack();
+
+        // ascundem toate ferestrele
+        hideAllWindows();
+        
+        // mutam butoanele de calculator
+        //moveButtons(s);
+
+        // afisam calculatorul de distanta
+        jFrameDistanceCalculator.setVisible(true);
+    }//GEN-LAST:event_jRadioMenuDistanceCalculatorActionPerformed
+
+    private void jRadioMenuSimpleCalculatorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioMenuSimpleCalculatorActionPerformed
+//        // transmitem meniul ferestrei principale la fereastra de Calculator distanta
+//        jFrameDistanceCalculator.setVisible(true);
+//        jFrameDistanceCalculator.pack();
+
+        // ascundem toate ferestrele
+        hideAllWindows();
+        this.setJMenuBar(this.getJMenuBar());
+        this.pack();
+        // afisam calculatorul simplu
+        this.setVisible(true);
+    }//GEN-LAST:event_jRadioMenuSimpleCalculatorActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jRadioMenuTemperatureCalculatorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioMenuTemperatureCalculatorActionPerformed
+        // transmitem meniul ferestrei principale la fereastra de Calculator distanta
+        jFrameTemperatureCalculator.setJMenuBar(this.getJMenuBar());
+        jFrameTemperatureCalculator.pack();
+
+        // ascundem toate ferestrele
+        hideAllWindows();
+
+        // afisam calculatorul de distanta
+        jFrameTemperatureCalculator.setVisible(true);
+    }//GEN-LAST:event_jRadioMenuTemperatureCalculatorActionPerformed
+
+    private void closingDistanceCalculator(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_closingDistanceCalculator
+        // trebuie sa iesim din aplicatie
+        dispatchEvent(new java.awt.event.WindowEvent(this, java.awt.event.WindowEvent.WINDOW_CLOSING));
+    }//GEN-LAST:event_closingDistanceCalculator
+
+    private void closeTemperatureCalculator(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_closeTemperatureCalculator
+        // trebuie sa iesim din aplicatie
+        dispatchEvent(new java.awt.event.WindowEvent(this, java.awt.event.WindowEvent.WINDOW_CLOSING));
+    }//GEN-LAST:event_closeTemperatureCalculator
 
     /**
      * @param args the command line arguments
@@ -258,57 +666,100 @@ public class SimpleCalculator extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroupCalculatorMenu;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton21;
+    private javax.swing.JButton jButton22;
+    private javax.swing.JButton jButton23;
+    private javax.swing.JButton jButton24;
+    private javax.swing.JButton jButton25;
+    private javax.swing.JButton jButton26;
+    private javax.swing.JButton jButton27;
+    private javax.swing.JButton jButton28;
+    private javax.swing.JButton jButton29;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton30;
+    private javax.swing.JButton jButton31;
+    private javax.swing.JButton jButton32;
+    private javax.swing.JButton jButton33;
+    private javax.swing.JButton jButton34;
+    private javax.swing.JButton jButton35;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JButton jButtonOK;
     private javax.swing.JDialog jDialogAboutCalculator;
+    private javax.swing.JFrame jFrameDistanceCalculator;
+    private javax.swing.JFrame jFrameTemperatureCalculator;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelAboutCalculator;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenu jMenuAbout;
+    private javax.swing.JMenuBar jMenuBar;
+    private javax.swing.JMenu jMenuCalculator;
     private javax.swing.JMenuItem jMenuExit;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
-    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem2;
-    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem3;
+    private javax.swing.JMenuItem jMenuItemAbout;
+    private javax.swing.JMenu jMenuSettings;
+    private javax.swing.JMenuItem jMenuSettingsLanguage;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanelButtons;
+    private javax.swing.JPanel jPanelDCContainer;
+    private javax.swing.JPanel jPanelSimpleCalculator;
+    private javax.swing.JRadioButtonMenuItem jRadioMenuDistanceCalculator;
+    private javax.swing.JRadioButtonMenuItem jRadioMenuSimpleCalculator;
+    private javax.swing.JRadioButtonMenuItem jRadioMenuTemperatureCalculator;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JTextArea jTextAreaAboutCalculator;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextFieldKilometers;
+    private javax.swing.JTextField jTextFieldMiles;
     // End of variables declaration//GEN-END:variables
 
     private void updateAllTexts() {
-    // Actualizăm mai întâi elementele de meniu
+        // Actualizăm mai întâi elementele de meniu
 //    System.out.println("routmmariusionel.SimpleCalculator.updateAllTexts()");
-    
-    javax.swing.JMenuBar menuBar = getJMenuBar();
-    if (menuBar != null) {
-        for (int i = 0; i < menuBar.getMenuCount(); i++) {
-            javax.swing.JMenu menu = menuBar.getMenu(i);
-            if (menu != null) {
-                // Înlocuim textul meniului principal dacă există traducere
-                String localizedText = LanguageManager.getString(menu.getText(), true);
-                if (localizedText != null) {
-//                    System.out.println("Meniu principal actualizat: " + localizedText);
-                    menu.setText(localizedText);
-                }
 
-                // Iterăm prin elementele submeniu (JMenuItem)
-                for (int j = 0; j < menu.getItemCount(); j++) {
-                    javax.swing.JMenuItem menuItem = menu.getItem(j);
-                    if (menuItem != null) {
-                        // Înlocuim textul submeniului dacă există traducere
-                        String localizedSubMenuText = LanguageManager.getString(menuItem.getText(), true);
-                        if (localizedSubMenuText != null) {
+        javax.swing.JMenuBar menuBar = getJMenuBar();
+        if (menuBar != null) {
+            for (int i = 0; i < menuBar.getMenuCount(); i++) {
+                javax.swing.JMenu menu = menuBar.getMenu(i);
+                if (menu != null) {
+                    // Înlocuim textul meniului principal dacă există traducere
+                    String localizedText = LanguageManager.getString(menu.getText(), true);
+                    if (localizedText != null) {
+//                    System.out.println("Meniu principal actualizat: " + localizedText);
+                        menu.setText(localizedText);
+                    }
+
+                    // Iterăm prin elementele submeniu (JMenuItem)
+                    for (int j = 0; j < menu.getItemCount(); j++) {
+                        javax.swing.JMenuItem menuItem = menu.getItem(j);
+                        if (menuItem != null) {
+                            // Înlocuim textul submeniului dacă există traducere
+                            String localizedSubMenuText = LanguageManager.getString(menuItem.getText(), true);
+                            if (localizedSubMenuText != null) {
 //                            System.out.println("Submeniu actualizat: " + localizedSubMenuText);
-                            menuItem.setText(localizedSubMenuText);
+                                menuItem.setText(localizedSubMenuText);
+                            }
                         }
                     }
                 }
             }
         }
     }
-}
+
+    private void hideAllWindows() {
+        for (Frame frame : Frame.getFrames()) {
+            if (frame.isVisible()) {
+                frame.setVisible(false);
+            }
+        }
+    }
+
+    private void moveButtons(javax.swing.JPanel fromPanel, javax.swing.JPanel toPanel) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 
 }
