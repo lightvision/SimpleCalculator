@@ -97,7 +97,7 @@
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="jMenu1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Calculator"/>
+            <Property name="text" type="java.lang.String" value="menu.Calculator"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JRadioButtonMenuItem" name="jRadioButtonMenuItem1">
@@ -106,7 +106,7 @@
                   <ComponentRef name="buttonGroupCalculatorMenu"/>
                 </Property>
                 <Property name="selected" type="boolean" value="true"/>
-                <Property name="text" type="java.lang.String" value="Calculator simplu"/>
+                <Property name="text" type="java.lang.String" value="menu.Calculator.DistanceCalculator"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JRadioButtonMenuItem" name="jRadioButtonMenuItem2">
@@ -114,7 +114,7 @@
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="buttonGroupCalculatorMenu"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Convertor distanta"/>
+                <Property name="text" type="java.lang.String" value="menu.Calculator.TemperatureConvertor"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JRadioButtonMenuItem" name="jRadioButtonMenuItem3">
@@ -122,14 +122,14 @@
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="buttonGroupCalculatorMenu"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Convertor temperatura"/>
+                <Property name="text" type="java.lang.String" value="menu.Calculator.TemperatureConvertor"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator1">
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuExit">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Iesire"/>
+                <Property name="text" type="java.lang.String" value="menu.Calculator.Exit"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuExitActionPerformed"/>
@@ -139,7 +139,7 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu3">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Setari"/>
+            <Property name="text" type="java.lang.String" value="menu.Settings"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem2">
@@ -156,7 +156,7 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Despre calculator"/>
+                <Property name="text" type="java.lang.String" value="menu.About.AboutCalculator"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem1ActionPerformed"/>

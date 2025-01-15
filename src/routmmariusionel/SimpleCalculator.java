@@ -17,14 +17,14 @@ public class SimpleCalculator extends javax.swing.JFrame {
      */
     public SimpleCalculator() {
         initComponents();
-        
-//        // Localizarea textelor
-//        // initializam mesajele componentelor 
-//        // cu stringurile din fisierul de resurse
-//        LanguageManager.setLanguage("ro");
-//        
-//        // actualizarea propriu-zisa a textelor
-//        updateAllTexts();
+
+        // Localizarea textelor
+        // initializam mesajele componentelor 
+        // cu stringurile din fisierul de resurse
+        LanguageManager.setLanguage("ro");
+
+        // actualizarea propriu-zisa a textelor
+        updateAllTexts();
     }
 
     /**
@@ -133,23 +133,23 @@ public class SimpleCalculator extends javax.swing.JFrame {
                 .addContainerGap(359, Short.MAX_VALUE))
         );
 
-        jMenu1.setText("Calculator");
+        jMenu1.setText("menu.Calculator");
 
         buttonGroupCalculatorMenu.add(jRadioButtonMenuItem1);
         jRadioButtonMenuItem1.setSelected(true);
-        jRadioButtonMenuItem1.setText("Calculator simplu");
+        jRadioButtonMenuItem1.setText("menu.Calculator.DistanceCalculator");
         jMenu1.add(jRadioButtonMenuItem1);
 
         buttonGroupCalculatorMenu.add(jRadioButtonMenuItem2);
-        jRadioButtonMenuItem2.setText("Convertor distanta");
+        jRadioButtonMenuItem2.setText("menu.Calculator.TemperatureConvertor");
         jMenu1.add(jRadioButtonMenuItem2);
 
         buttonGroupCalculatorMenu.add(jRadioButtonMenuItem3);
-        jRadioButtonMenuItem3.setText("Convertor temperatura");
+        jRadioButtonMenuItem3.setText("menu.Calculator.TemperatureConvertor");
         jMenu1.add(jRadioButtonMenuItem3);
         jMenu1.add(jSeparator1);
 
-        jMenuExit.setText("Iesire");
+        jMenuExit.setText("menu.Calculator.Exit");
         jMenuExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuExitActionPerformed(evt);
@@ -159,7 +159,7 @@ public class SimpleCalculator extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu3.setText("Setari");
+        jMenu3.setText("menu.Settings");
 
         jMenuItem2.setText("Limba");
         jMenu3.add(jMenuItem2);
@@ -168,7 +168,7 @@ public class SimpleCalculator extends javax.swing.JFrame {
 
         jMenu2.setText("menu.About");
 
-        jMenuItem1.setText("Despre calculator");
+        jMenuItem1.setText("menu.About.AboutCalculator");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);
@@ -204,7 +204,7 @@ public class SimpleCalculator extends javax.swing.JFrame {
         // Exit from application
         // este evident ca vreau sa iesim si puteam iesi cu System.exit(0);
         // dar ca toata lumea sa fie fericita si sa folosim evenimentul, am simulat apasarea butonului de X a ferestrei
-        if (evt.getSource()==jMenuExit){
+        if (evt.getSource() == jMenuExit) {
             dispatchEvent(new java.awt.event.WindowEvent(this, java.awt.event.WindowEvent.WINDOW_CLOSING));
         }
     }//GEN-LAST:event_jMenuExitActionPerformed
@@ -279,6 +279,36 @@ public class SimpleCalculator extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void updateAllTexts() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    // Actualizăm mai întâi elementele de meniu
+//    System.out.println("routmmariusionel.SimpleCalculator.updateAllTexts()");
+    
+    javax.swing.JMenuBar menuBar = getJMenuBar();
+    if (menuBar != null) {
+        for (int i = 0; i < menuBar.getMenuCount(); i++) {
+            javax.swing.JMenu menu = menuBar.getMenu(i);
+            if (menu != null) {
+                // Înlocuim textul meniului principal dacă există traducere
+                String localizedText = LanguageManager.getString(menu.getText(), true);
+                if (localizedText != null) {
+//                    System.out.println("Meniu principal actualizat: " + localizedText);
+                    menu.setText(localizedText);
+                }
+
+                // Iterăm prin elementele submeniu (JMenuItem)
+                for (int j = 0; j < menu.getItemCount(); j++) {
+                    javax.swing.JMenuItem menuItem = menu.getItem(j);
+                    if (menuItem != null) {
+                        // Înlocuim textul submeniului dacă există traducere
+                        String localizedSubMenuText = LanguageManager.getString(menuItem.getText(), true);
+                        if (localizedSubMenuText != null) {
+//                            System.out.println("Submeniu actualizat: " + localizedSubMenuText);
+                            menuItem.setText(localizedSubMenuText);
+                        }
+                    }
+                }
+            }
+        }
     }
+}
+
 }
