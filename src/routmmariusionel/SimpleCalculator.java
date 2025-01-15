@@ -233,11 +233,6 @@ public class SimpleCalculator extends javax.swing.JFrame {
         });
 
         jButton6.setText("Calculator temperartura");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -616,10 +611,6 @@ public class SimpleCalculator extends javax.swing.JFrame {
         // afisam calculatorul simplu
         this.setVisible(true);
     }//GEN-LAST:event_jRadioMenuSimpleCalculatorActionPerformed
-
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jRadioMenuTemperatureCalculatorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioMenuTemperatureCalculatorActionPerformed
         // transmitem meniul ferestrei principale la fereastra de Calculator distanta
