@@ -5,6 +5,11 @@
 package routmmariusionel;
 
 import java.awt.Frame;
+import java.util.List;
+import java.util.Arrays;
+import java.util.Collections;
+import javax.swing.JButton;
+import javax.swing.SwingUtilities;
 import routmmariusionel.resources.LanguageManager;
 
 /**
@@ -13,10 +18,16 @@ import routmmariusionel.resources.LanguageManager;
  */
 public class SimpleCalculator extends javax.swing.JFrame {
 
+    // Listele de butoane invalide pentru fiecare tip de calculator
+    private final List<JButton> distanceCalculatorInvalidButtons;
+    private final List<JButton> temperatureCalculatorInvalidButtons;
+
     /**
      * Creates new form CalculatorSimplu
      */
     public SimpleCalculator() {
+        this.temperatureCalculatorInvalidButtons = Arrays.asList(jButton5);
+        this.distanceCalculatorInvalidButtons = Arrays.asList(jButton5);
         initComponents();
 
         // Localizarea textelor
@@ -305,6 +316,7 @@ public class SimpleCalculator extends javax.swing.JFrame {
         jButton26.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
         jButton26.setText("X");
         jButton26.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton26.setName("multiply"); // NOI18N
         jButton26.setPreferredSize(new java.awt.Dimension(80, 80));
 
         jButton3.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
@@ -354,7 +366,9 @@ public class SimpleCalculator extends javax.swing.JFrame {
 
         jButton5.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
         jButton5.setText("+/-");
+        jButton5.setActionCommand("");
         jButton5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton5.setName("jButton5"); // NOI18N
         jButton5.setPreferredSize(new java.awt.Dimension(80, 80));
 
         jButton34.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
@@ -581,9 +595,9 @@ public class SimpleCalculator extends javax.swing.JFrame {
 
         // ascundem toate ferestrele
         hideAllWindows();
-        
-        // mutam butoanele de calculator
-        //moveButtons(s);
+
+        // mutam butoanele de calculator in fereastra de Calculator Distanrta
+        moveButtons(this.jPanelButtons, this.jPanelDCContainer, "DistanceCalculator");
 
         // afisam calculatorul de distanta
         jFrameDistanceCalculator.setVisible(true);
@@ -758,8 +772,54 @@ public class SimpleCalculator extends javax.swing.JFrame {
         }
     }
 
-    private void moveButtons(javax.swing.JPanel fromPanel, javax.swing.JPanel toPanel) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    private void moveButtons(javax.swing.JPanel sourcePanel, javax.swing.JPanel destinationPanel, String calculatorType) {
+        // Listele de butoane invalide în funcție de tipul de calculator
+        List<JButton> invalidButtons = switch (calculatorType) {
+            case "DistanceCalculator" ->
+                distanceCalculatorInvalidButtons;
+            case "TemperatureCalculator" ->
+                temperatureCalculatorInvalidButtons;
+            default ->
+                Collections.emptyList(); // Nicio dezactivare pentru calculatorul principal
+        };
+
+        // Iterează prin componentele din sourcePanel
+        java.awt.Component[] components = sourcePanel.getComponents();
+        for (java.awt.Component component : components) {
+            if (component instanceof JButton button) {
+                // Reactivăm toate butoanele înainte de mutare
+                button.setEnabled(true);
+
+                // Mutăm butonul în destinationPanel
+                sourcePanel.remove(button);
+                destinationPanel.add(button);
+
+                // Verificăm dacă numele butonului este în lista de butoane invalide
+                String buttonName = button.getName();
+                if (buttonName!=null){
+                    System.out.println(buttonName);
+                    if(invalidButtons.contains(buttonName)){
+                        System.out.println("FOOOOOO");
+                    }
+                }
+            }
+        }
+
+        // Actualizează interfața grafică pentru ambele panouri
+        sourcePanel.revalidate();
+        sourcePanel.repaint();
+        destinationPanel.revalidate();
+        destinationPanel.repaint();
+
+        // Obține fereastra părinte a sourcePanel
+        java.awt.Window sourceWindow = SwingUtilities.getWindowAncestor(sourcePanel);
+        // Obține fereastra părinte a destinationPanel
+        java.awt.Window destinationWindow = SwingUtilities.getWindowAncestor(destinationPanel);
+
+        if (sourceWindow != null && destinationWindow != null) {
+            // Setează dimensiunea ferestrei destinație la dimensiunea ferestrei sursă
+            destinationWindow.setSize(sourceWindow.getSize());
+        }
     }
 
 }
