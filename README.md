@@ -29,5 +29,6 @@ Este un calculator simplu care are 3 componente:
     - Sunt implementate 2 pachete de limba: romana si engleza.
     - In interfata, proprietatea text este configurata la valoarea cheii pentru respectiva componenta din interfata
 - Aplicatia foloseste o icoana particularizata
-
+- Layout-ul este complex iar butoanele sunt desenate 1 singura data dupa care sunt mutate pe fiecare calculator;
+- Butoanele mutate sunt dezactivate/reactivate in functie de contextul calculatorului.
 
