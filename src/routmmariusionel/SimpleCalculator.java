@@ -47,6 +47,7 @@ public class SimpleCalculator extends javax.swing.JFrame {
         initComponents();
 
         setupDistanceCalculator(); // Configurăm calculatorul de distanță
+        setupTemperatureConverter(); // Configurează convertorul de temperatură
 
         LanguageManager.setLanguage("ro");
         updateAllTexts();
@@ -217,11 +218,13 @@ public class SimpleCalculator extends javax.swing.JFrame {
         jLabel7.setText("Celsius:");
 
         jTextField5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jTextField5.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel8.setText("Fahrenheit:");
 
         jTextField8.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jTextField8.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
@@ -932,6 +935,14 @@ public static void addSyncListeners(JTextField source, JTextField target, java.u
 }
 
 
+private void setupTemperatureConverter() {
+    // Adaugă validare pentru input numeric
+    addNumericKeyListener(jTextField5, jTextField8);
+
+    // Sincronizare bidirecțională între Celsius și Fahrenheit
+    addSyncListeners(jTextField5, jTextField8, celsius -> (celsius * 9/5) + 32); // Celsius -> Fahrenheit
+    addSyncListeners(jTextField8, jTextField5, fahrenheit -> (fahrenheit - 32) * 5/9); // Fahrenheit -> Celsius
+}
 
 
 }
