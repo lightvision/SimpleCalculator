@@ -13,6 +13,7 @@ package routmmariusionel;
 
 import java.awt.Frame;
 import java.awt.event.WindowEvent;
+import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.Arrays;
@@ -36,9 +37,15 @@ public class SimpleCalculator extends javax.swing.JFrame {
     private final List<String> temperatureCalculatorInvalidButtons = Arrays.asList("jButton8", "jButtonAdd");
     private String sourceMenu = null;
     private String destinationMenu = "BasicCalculator";
+
+    // Variabile comune
     private static boolean isUpdating = false; // Previne ciclurile infinite
+    private static char decimalSeparator = new DecimalFormatSymbols(Locale.getDefault()).getDecimalSeparator();
 
-
+    // Variabile pentru calculatorul numeric
+    private String currentOperator = "";
+    private double firstOperand = 0;
+    private boolean isSecondOperand = false;
 
     /**
      * Creates new form SimpleCalculator
@@ -46,8 +53,25 @@ public class SimpleCalculator extends javax.swing.JFrame {
     public SimpleCalculator() {
         initComponents();
 
-        setupDistanceCalculator(); // Configurăm calculatorul de distanță
-        setupTemperatureConverter(); // Configurează convertorul de temperatură
+        // Configurăm funcționalitățile calculatoarelor
+        setupDistanceConverter();
+        setupTemperatureConverter();
+        setupNumericCalculator();
+
+        this.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                jTextFieldDisplay.requestFocusInWindow(); // Forțează focusul pe activare
+            }
+
+        });
+        
+         this.addKeyListener(new java.awt.event.KeyAdapter() {
+        @Override
+        public void keyPressed(java.awt.event.KeyEvent evt) {
+            handleKeyPress(evt);
+        }
+    });
 
         LanguageManager.setLanguage("ro");
         updateAllTexts();
@@ -86,28 +110,28 @@ public class SimpleCalculator extends javax.swing.JFrame {
         buttonGroupCalculatorMenu = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
+        jTextFieldDisplay = new javax.swing.JTextField();
         jPanelBasicCalcButtons = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        jButtonClear = new javax.swing.JButton();
+        jButtonParanthesis = new javax.swing.JButton();
+        jButtonPercent = new javax.swing.JButton();
+        jButtonDivide = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
-        jButton12 = new javax.swing.JButton();
-        jButton13 = new javax.swing.JButton();
-        jButton14 = new javax.swing.JButton();
-        jButton15 = new javax.swing.JButton();
-        jButton16 = new javax.swing.JButton();
-        jButton17 = new javax.swing.JButton();
-        jButton18 = new javax.swing.JButton();
-        jButton19 = new javax.swing.JButton();
-        jButton20 = new javax.swing.JButton();
+        jButtonMultiply = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
+        jButtonSubtract = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButtonAdd = new javax.swing.JButton();
+        jButtonToggleSign = new javax.swing.JButton();
+        jButton0 = new javax.swing.JButton();
+        jButtonDecimal = new javax.swing.JButton();
+        jButtonEquals = new javax.swing.JButton();
         jMenuBar = new javax.swing.JMenuBar();
         jMenuCalculatorRadio = new javax.swing.JMenu();
         jRadioMenuSimpleCalculator = new javax.swing.JRadioButtonMenuItem();
@@ -352,8 +376,8 @@ public class SimpleCalculator extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTextField1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        jTextFieldDisplay.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jTextFieldDisplay.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -361,99 +385,99 @@ public class SimpleCalculator extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTextField1)
+                .addComponent(jTextFieldDisplay)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
+                .addComponent(jTextFieldDisplay, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         jPanelBasicCalcButtons.setLayout(new java.awt.GridLayout(5, 4, 5, 5));
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jButton1.setText("C");
-        jPanelBasicCalcButtons.add(jButton1);
+        jButtonClear.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jButtonClear.setText("C");
+        jPanelBasicCalcButtons.add(jButtonClear);
 
-        jButton2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jButton2.setText("( )");
-        jPanelBasicCalcButtons.add(jButton2);
+        jButtonParanthesis.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jButtonParanthesis.setText("( )");
+        jPanelBasicCalcButtons.add(jButtonParanthesis);
 
-        jButton3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jButton3.setText("%");
-        jPanelBasicCalcButtons.add(jButton3);
+        jButtonPercent.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jButtonPercent.setText("%");
+        jPanelBasicCalcButtons.add(jButtonPercent);
 
-        jButton4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jButton4.setText("/");
-        jPanelBasicCalcButtons.add(jButton4);
-
-        jButton5.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jButton5.setText("7");
-        jPanelBasicCalcButtons.add(jButton5);
-
-        jButton6.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jButton6.setText("8");
-        jPanelBasicCalcButtons.add(jButton6);
+        jButtonDivide.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jButtonDivide.setText("/");
+        jPanelBasicCalcButtons.add(jButtonDivide);
 
         jButton7.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jButton7.setText("9");
+        jButton7.setText("7");
         jPanelBasicCalcButtons.add(jButton7);
 
         jButton8.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jButton8.setText("X");
-        jButton8.setName("jButton8"); // NOI18N
+        jButton8.setText("8");
         jPanelBasicCalcButtons.add(jButton8);
 
         jButton9.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jButton9.setText("4");
+        jButton9.setText("9");
         jPanelBasicCalcButtons.add(jButton9);
 
-        jButton10.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jButton10.setText("5");
-        jPanelBasicCalcButtons.add(jButton10);
+        jButtonMultiply.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jButtonMultiply.setText("X");
+        jButtonMultiply.setName("jButtonMultiply"); // NOI18N
+        jPanelBasicCalcButtons.add(jButtonMultiply);
 
-        jButton11.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jButton11.setText("6");
-        jPanelBasicCalcButtons.add(jButton11);
+        jButton4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jButton4.setText("4");
+        jPanelBasicCalcButtons.add(jButton4);
 
-        jButton12.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jButton12.setText("-");
-        jPanelBasicCalcButtons.add(jButton12);
+        jButton5.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jButton5.setText("5");
+        jPanelBasicCalcButtons.add(jButton5);
 
-        jButton13.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jButton13.setText("1");
-        jPanelBasicCalcButtons.add(jButton13);
+        jButton6.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jButton6.setText("6");
+        jPanelBasicCalcButtons.add(jButton6);
 
-        jButton14.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jButton14.setText("2");
-        jPanelBasicCalcButtons.add(jButton14);
+        jButtonSubtract.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jButtonSubtract.setText("-");
+        jPanelBasicCalcButtons.add(jButtonSubtract);
 
-        jButton15.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jButton15.setText("3");
-        jPanelBasicCalcButtons.add(jButton15);
+        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jButton1.setText("1");
+        jPanelBasicCalcButtons.add(jButton1);
 
-        jButton16.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jButton16.setText("+");
-        jPanelBasicCalcButtons.add(jButton16);
+        jButton2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jButton2.setText("2");
+        jPanelBasicCalcButtons.add(jButton2);
 
-        jButton17.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jButton17.setText("+/-");
-        jPanelBasicCalcButtons.add(jButton17);
+        jButton3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jButton3.setText("3");
+        jPanelBasicCalcButtons.add(jButton3);
 
-        jButton18.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jButton18.setText("0");
-        jPanelBasicCalcButtons.add(jButton18);
+        jButtonAdd.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jButtonAdd.setText("+");
+        jPanelBasicCalcButtons.add(jButtonAdd);
 
-        jButton19.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jButton19.setText(",");
-        jButton19.setToolTipText("");
-        jPanelBasicCalcButtons.add(jButton19);
+        jButtonToggleSign.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jButtonToggleSign.setText("+/-");
+        jPanelBasicCalcButtons.add(jButtonToggleSign);
 
-        jButton20.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jButton20.setText("=");
-        jPanelBasicCalcButtons.add(jButton20);
+        jButton0.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jButton0.setText("0");
+        jPanelBasicCalcButtons.add(jButton0);
+
+        jButtonDecimal.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jButtonDecimal.setText(",");
+        jButtonDecimal.setToolTipText("");
+        jPanelBasicCalcButtons.add(jButtonDecimal);
+
+        jButtonEquals.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jButtonEquals.setText("=");
+        jPanelBasicCalcButtons.add(jButtonEquals);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -670,19 +694,9 @@ public class SimpleCalculator extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroupCalculatorMenu;
+    private javax.swing.JButton jButton0;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton13;
-    private javax.swing.JButton jButton14;
-    private javax.swing.JButton jButton15;
-    private javax.swing.JButton jButton16;
-    private javax.swing.JButton jButton17;
-    private javax.swing.JButton jButton18;
-    private javax.swing.JButton jButton19;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton20;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -690,7 +704,17 @@ public class SimpleCalculator extends javax.swing.JFrame {
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
+    private javax.swing.JButton jButtonAdd;
+    private javax.swing.JButton jButtonClear;
+    private javax.swing.JButton jButtonDecimal;
+    private javax.swing.JButton jButtonDivide;
+    private javax.swing.JButton jButtonEquals;
+    private javax.swing.JButton jButtonMultiply;
     private javax.swing.JButton jButtonOK;
+    private javax.swing.JButton jButtonParanthesis;
+    private javax.swing.JButton jButtonPercent;
+    private javax.swing.JButton jButtonSubtract;
+    private javax.swing.JButton jButtonToggleSign;
     private javax.swing.JDialog jDialogAboutCalculator;
     private javax.swing.JFrame jFrameDistanceCalculator;
     private javax.swing.JFrame jFrameTemperatureCalculator;
@@ -721,11 +745,11 @@ public class SimpleCalculator extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPopupMenu.Separator jSeparator3;
     private javax.swing.JTextArea jTextAreaAboutCalculator;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
+    private javax.swing.JTextField jTextFieldDisplay;
     // End of variables declaration//GEN-END:variables
 
     /**
@@ -843,106 +867,259 @@ public class SimpleCalculator extends javax.swing.JFrame {
         };
     }
 
-    private void setupDistanceCalculator() {
-    // Validare taste (permit doar cifrele și tastele speciale)
-    addNumericKeyListener(jTextField3, jTextField7);
+    private void setupDistanceConverter() {
+        // Validare taste
+        addNumericKeyListener(jTextField3, jTextField7);
 
-    // Sincronizare bidirecțională
-    addSyncListeners(jTextField3, jTextField7, kilometers -> kilometers / 1.60934); // KM -> Mile
-    addSyncListeners(jTextField7, jTextField3, miles -> miles * 1.60934);          // Mile -> KM
-}
+        // Sincronizare bidirecțională
+        addSyncListeners(jTextField3, jTextField7, kilometers -> kilometers / 1.60934); // KM -> Mile
+        addSyncListeners(jTextField7, jTextField3, miles -> miles * 1.60934);          // Mile -> KM
+    }
 
-public static void addNumericKeyListener(JTextField... textFields) {
-    java.awt.event.KeyAdapter numericKeyListener = new java.awt.event.KeyAdapter() {
-        @Override
-        public void keyTyped(java.awt.event.KeyEvent evt) {
-            char c = evt.getKeyChar();
-            JTextField source = (JTextField) evt.getSource();
+    private void setupTemperatureConverter() {
+        // Validare taste
+        addNumericKeyListener(jTextField5, jTextField8);
 
-            // Permite doar cifre, separatorul zecimal și tastele speciale
-            if (!Character.isDigit(c) && c != '.' && c != ',' 
-                && c != java.awt.event.KeyEvent.VK_BACK_SPACE 
-                && c != java.awt.event.KeyEvent.VK_DELETE) {
-                evt.consume(); // Ignorăm caracterele invalide
-                return;
+        // Sincronizare bidirecțională
+        addSyncListeners(jTextField5, jTextField8, celsius -> celsius * 9 / 5 + 32); // Celsius -> Fahrenheit
+        addSyncListeners(jTextField8, jTextField5, fahrenheit -> (fahrenheit - 32) * 5 / 9); // Fahrenheit -> Celsius
+    }
+
+    private void setupNumericCalculator() {
+        // Ascultători pentru cifre
+        jButton0.addActionListener(e -> appendToDisplay("0"));
+        jButton1.addActionListener(e -> appendToDisplay("1"));
+        jButton2.addActionListener(e -> appendToDisplay("2"));
+        jButton3.addActionListener(e -> appendToDisplay("3"));
+        jButton4.addActionListener(e -> appendToDisplay("4"));
+        jButton5.addActionListener(e -> appendToDisplay("5"));
+        jButton6.addActionListener(e -> appendToDisplay("6"));
+        jButton7.addActionListener(e -> appendToDisplay("7"));
+        jButton8.addActionListener(e -> appendToDisplay("8"));
+        jButton9.addActionListener(e -> appendToDisplay("9"));
+
+        // Ascultători pentru operații
+        jButtonAdd.addActionListener(e -> setOperator("+"));
+        jButtonSubtract.addActionListener(e -> setOperator("-"));
+        jButtonMultiply.addActionListener(e -> setOperator("*"));
+        jButtonDivide.addActionListener(e -> setOperator("/"));
+
+        // Egal și resetare
+        jButtonEquals.addActionListener(e -> calculateResult());
+        jButtonClear.addActionListener(e -> resetCalculator());
+
+        // Schimbare semn
+        jButtonToggleSign.addActionListener(e -> toggleSign());
+    }
+
+    public static void addNumericKeyListener(JTextField... textFields) {
+        java.awt.event.KeyAdapter numericKeyListener = new java.awt.event.KeyAdapter() {
+            @Override
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                char c = evt.getKeyChar();
+                JTextField source = (JTextField) evt.getSource();
+                String text = source.getText();
+
+                // Obține separatorul zecimal specific locale-ului
+                DecimalFormatSymbols symbols = new DecimalFormatSymbols(Locale.getDefault());
+                char decimalSeparator = symbols.getDecimalSeparator();
+
+                // Permite doar cifre, separatorul zecimal și tastele speciale
+                if (!Character.isDigit(c) && c != decimalSeparator
+                        && c != java.awt.event.KeyEvent.VK_BACK_SPACE
+                        && c != java.awt.event.KeyEvent.VK_DELETE) {
+                    evt.consume(); // Ignorăm caracterele invalide
+                    return;
+                }
+
+                // Permite doar un singur separator zecimal
+                if (c == decimalSeparator && text.contains(String.valueOf(decimalSeparator))) {
+                    evt.consume(); // Ignorăm al doilea separator
+                }
+            }
+        };
+
+        for (JTextField textField : textFields) {
+            textField.addKeyListener(numericKeyListener);
+        }
+    }
+
+    public static void addSyncListeners(JTextField source, JTextField target, java.util.function.Function<Double, Double> converter) {
+        source.getDocument().addDocumentListener(new javax.swing.event.DocumentListener() {
+            @Override
+            public void insertUpdate(javax.swing.event.DocumentEvent e) {
+                sync();
             }
 
-            // Permite doar un singur separator zecimal
-            String text = source.getText();
-            if ((c == '.' || c == ',') && (text.contains(".") || text.contains(","))) {
-                evt.consume(); // Ignorăm al doilea separator
+            @Override
+            public void removeUpdate(javax.swing.event.DocumentEvent e) {
+                sync();
+            }
+
+            @Override
+            public void changedUpdate(javax.swing.event.DocumentEvent e) {
+                sync();
+            }
+
+            private void sync() {
+                if (isUpdating) {
+                    return;
+                }
+
+                try {
+                    isUpdating = true;
+                    String text = source.getText().trim().replace(decimalSeparator, '.');
+                    if (!text.isEmpty()) {
+                        double value = Double.parseDouble(text);
+                        double convertedValue = converter.apply(value);
+                        target.setText(String.format(Locale.getDefault(), "%,.2f", convertedValue).replace('.', decimalSeparator));
+                    } else {
+                        target.setText("");
+                    }
+                } catch (NumberFormatException ex) {
+                    target.setText("");
+                } finally {
+                    isUpdating = false;
+                }
+            }
+        });
+    }
+
+    private void appendToDisplay(String text) {
+        // Dacă suntem pe al doilea operand, resetăm afișajul
+        if (isSecondOperand) {
+            jTextFieldDisplay.setText(""); // Resetăm afișajul
+            isSecondOperand = false;      // Marcăm că am început să introducem al doilea operand
+        }
+
+        // Permitem adăugarea separatorului zecimal doar o singură dată
+        if (text.equals(String.valueOf(decimalSeparator))) {
+            if (jTextFieldDisplay.getText().contains(String.valueOf(decimalSeparator))) {
+                return; // Nu permite al doilea separator zecimal
             }
         }
-    };
 
-    for (JTextField textField : textFields) {
-        textField.addKeyListener(numericKeyListener);
+        // Adăugăm textul la afișaj
+        jTextFieldDisplay.setText(jTextFieldDisplay.getText() + text);
+    }
+
+    private void setOperator(String operator) {
+    try {
+        // Obținem primul operand, normalizând separatorul zecimal
+        firstOperand = Double.parseDouble(jTextFieldDisplay.getText().replace(decimalSeparator, '.'));
+    } catch (NumberFormatException e) {
+        jTextFieldDisplay.setText("Error");
+        return;
+    }
+
+    currentOperator = operator; // Setăm operatorul curent
+    isSecondOperand = true;     // Marcăm faptul că urmează al doilea operand
+}
+
+
+    private void calculateResult() {
+    if (currentOperator.isEmpty()) {
+        jTextFieldDisplay.setText("Error: No operator");
+        return;
+    }
+
+    try {
+        // Obținem al doilea operand, normalizând separatorul zecimal
+        String secondOperandText = jTextFieldDisplay.getText().replace(decimalSeparator, '.');
+        double secondOperand = Double.parseDouble(secondOperandText);
+        double result = 0;
+
+        // Calculăm rezultatul pe baza operatorului curent
+        switch (currentOperator) {
+            case "+":
+                result = firstOperand + secondOperand;
+                break;
+            case "-":
+                result = firstOperand - secondOperand;
+                break;
+            case "*":
+                result = firstOperand * secondOperand;
+                break;
+            case "/":
+                if (secondOperand == 0) {
+                    jTextFieldDisplay.setText("Cannot divide by 0");
+                    return;
+                }
+                result = firstOperand / secondOperand;
+                break;
+            default:
+                jTextFieldDisplay.setText("Error: Invalid operator");
+                return;
+        }
+
+        // Afișăm rezultatul formatat conform locale-ului
+        jTextFieldDisplay.setText(String.format(Locale.getDefault(), "%,.2f", result).replace('.', decimalSeparator));
+
+        // Resetăm starea
+        currentOperator = ""; // Resetează operatorul după calcul
+        isSecondOperand = false; // Permite o nouă operație
+        firstOperand = result; // Setăm rezultatul ca operand pentru operațiile ulterioare
+    } catch (NumberFormatException e) {
+        jTextFieldDisplay.setText("Error: Invalid input");
     }
 }
 
 
+    private void resetCalculator() {
+        jTextFieldDisplay.setText(""); // Golește afișajul
+        currentOperator = "";          // Resetează operatorul
+        firstOperand = 0;              // Resetează primul operand
+        isSecondOperand = false;       // Permite o nouă operație
+    }
 
-public static void addSyncListeners(JTextField source, JTextField target, java.util.function.Function<Double, Double> converter) {
-    Locale locale = Locale.getDefault(); // Locale-ul sistemului
-    NumberFormat numberFormat = NumberFormat.getNumberInstance(locale);
-    numberFormat.setMaximumFractionDigits(3);
-    numberFormat.setMinimumFractionDigits(3);
-
-    source.getDocument().addDocumentListener(new javax.swing.event.DocumentListener() {
-        @Override
-        public void insertUpdate(javax.swing.event.DocumentEvent e) {
-            sync();
+    private void toggleSign() {
+        try {
+            double value = Double.parseDouble(jTextFieldDisplay.getText());
+            value = -value; // Schimbăm semnul
+            jTextFieldDisplay.setText(String.format("%.2f", value));
+        } catch (NumberFormatException e) {
+            jTextFieldDisplay.setText("Error tootle");
         }
+    }
+    
+    private void handleKeyPress(java.awt.event.KeyEvent evt) {
+    char keyChar = evt.getKeyChar();
 
-        @Override
-        public void removeUpdate(javax.swing.event.DocumentEvent e) {
-            sync();
-        }
+    // Gestionăm cifrele
+    if (Character.isDigit(keyChar)) {
+        appendToDisplay(String.valueOf(keyChar));
+        return;
+    }
 
-        @Override
-        public void changedUpdate(javax.swing.event.DocumentEvent e) {
-            sync();
-        }
+    // Gestionăm separatorul zecimal
+    if (keyChar == decimalSeparator) {
+        appendToDisplay(String.valueOf(decimalSeparator));
+        return;
+    }
 
-        private void sync() {
-            if (isUpdating) {
-                return;
-            }
+    // Gestionăm operatorii
+    if (keyChar == '+' || keyChar == '-' || keyChar == '*' || keyChar == '/') {
+        setOperator(String.valueOf(keyChar));
+        return;
+    }
 
-            try {
-                isUpdating = true; // Blocăm modificările recursive
-                String text = source.getText().trim();
-                if (!text.isEmpty()) {
-                    // Conversie din text în număr
-                    Number parsedNumber = numberFormat.parse(text);
-                    double value = parsedNumber.doubleValue();
-
-                    // Conversie logică (KM -> Mile sau invers)
-                    double convertedValue = converter.apply(value);
-
-                    // Afișare cu format local
-                    target.setText(numberFormat.format(convertedValue));
-                } else {
-                    target.setText(""); // Golește dacă textul este gol
-                }
-            } catch (ParseException ex) {
-                target.setText(""); // Ignorăm erorile de conversie
-            } finally {
-                isUpdating = false; // Deblocăm modificările
-            }
-        }
-    });
+    // Gestionăm tasta Enter (calcul rezultat)
+    if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+        calculateResult();
+    }
 }
 
-
-private void setupTemperatureConverter() {
-    // Adaugă validare pentru input numeric
-    addNumericKeyListener(jTextField5, jTextField8);
-
-    // Sincronizare bidirecțională între Celsius și Fahrenheit
-    addSyncListeners(jTextField5, jTextField8, celsius -> (celsius * 9/5) + 32); // Celsius -> Fahrenheit
-    addSyncListeners(jTextField8, jTextField5, fahrenheit -> (fahrenheit - 32) * 5/9); // Fahrenheit -> Celsius
-}
-
+//private void setOperator(String operator) {
+//    if (!isSecondOperand) {
+//        try {
+//            firstOperand = Double.parseDouble(jTextFieldDisplay.getText().replace(decimalSeparator, '.'));
+//        } catch (NumberFormatException e) {
+//            jTextFieldDisplay.setText("Error: Invalid input");
+//            return;
+//        }
+//        isSecondOperand = true; // Indică faptul că urmează al doilea operand
+//    }
+//    currentOperator = operator; // Setăm operatorul
+//}
 
 }
