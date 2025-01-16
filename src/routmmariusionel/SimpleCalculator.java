@@ -1,15 +1,26 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+/**
+ * Calculator multiplu
+ *
+ * Calculatorul include:
+ * - calculator simplu
+ * - calculator de distante (kilometri <-> mile) - calculator de temperatura
+ * (Celsius <-> Fahrenheit)
+ *
+ * @author Marius-Florinel Ionel, Informatica ID, anul 3
+ * @copyright Marius Ionel 2025
  */
 package routmmariusionel;
 
 import java.awt.Frame;
 import java.awt.event.WindowEvent;
+import java.text.NumberFormat;
+import java.text.ParseException;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 import javax.swing.JButton;
+import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import routmmariusionel.resources.LanguageManager;
 
@@ -25,12 +36,17 @@ public class SimpleCalculator extends javax.swing.JFrame {
     private final List<String> temperatureCalculatorInvalidButtons = Arrays.asList("jButton8", "jButtonAdd");
     private String sourceMenu = null;
     private String destinationMenu = "BasicCalculator";
+    private static boolean isUpdating = false; // Previne ciclurile infinite
+
+
 
     /**
      * Creates new form SimpleCalculator
      */
     public SimpleCalculator() {
         initComponents();
+
+        setupDistanceCalculator(); // Configurăm calculatorul de distanță
 
         LanguageManager.setLanguage("ro");
         updateAllTexts();
@@ -113,11 +129,13 @@ public class SimpleCalculator extends javax.swing.JFrame {
         jLabel5.setText("Kilometri:");
 
         jTextField3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jTextField3.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel6.setText("Mile:");
 
         jTextField7.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jTextField7.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -544,13 +562,13 @@ public class SimpleCalculator extends javax.swing.JFrame {
         if (sourceMenu.equals(destinationMenu)) {
             return;
         }
-        
+
         this.setJMenuBar(this.getJMenuBar());
         hideAllWindows();
         this.pack();
 
         moveCalcButtons(sourceMenu, destinationMenu);
-        
+
         this.setVisible(true);
     }//GEN-LAST:event_jRadioMenuSimpleCalculatorActionPerformed
 
@@ -558,17 +576,17 @@ public class SimpleCalculator extends javax.swing.JFrame {
         // actualizam sursa si destinatia
         sourceMenu = destinationMenu;
         destinationMenu = "DistanceCalculator";
-        
-        if(sourceMenu.equals(destinationMenu)){
+
+        if (sourceMenu.equals(destinationMenu)) {
             return;
         }
-        
+
         jFrameDistanceCalculator.setJMenuBar(this.jMenuBar);
         jFrameDistanceCalculator.pack();
         hideAllWindows();
 
         moveCalcButtons(sourceMenu, destinationMenu);
-        
+
         jFrameDistanceCalculator.setVisible(true);
     }//GEN-LAST:event_jRadioMenuDistanceCalculatorActionPerformed
 
@@ -576,11 +594,11 @@ public class SimpleCalculator extends javax.swing.JFrame {
         // actualizam sursa si destinatia
         sourceMenu = destinationMenu;
         destinationMenu = "TemperatureCalculator";
-        
-        if(sourceMenu.equals(destinationMenu)){
+
+        if (sourceMenu.equals(destinationMenu)) {
             return;
         }
-        
+
         jFrameTemperatureCalculator.setJMenuBar(this.jMenuBar);
         jFrameTemperatureCalculator.pack();
         hideAllWindows();
@@ -754,10 +772,11 @@ public class SimpleCalculator extends javax.swing.JFrame {
         }
     }
 
-        /**
+    /**
      * Mutam butoanele din calculatorul curent in noul calculator
+     *
      * @param sourceMenu
-     * @param destinationMenu 
+     * @param destinationMenu
      */
     private void moveCalcButtons(String sourceMenu, String destinationMenu) {
         //System.out.println("sourceMenu: " + sourceMenu + " destinationMenu: " + destinationMenu);
@@ -767,7 +786,6 @@ public class SimpleCalculator extends javax.swing.JFrame {
         }
         javax.swing.JPanel sourcePanel = getPanelButtonsForMenu(sourceMenu);
         javax.swing.JPanel destinationPanel = getPanelButtonsForMenu(destinationMenu);
-        
 
         // determinam lista de butoane care trebuiesc inactivate
         List<String> invalidButtonNames = switch (destinationMenu) {
@@ -779,26 +797,26 @@ public class SimpleCalculator extends javax.swing.JFrame {
                 // Nici o dezactivare pentru calculatorul principal
                 Collections.emptyList();
         };
-        
+
         // mutam butoanele calculatorului din panoul sursa in cel de destinatie
         java.awt.Component[] components = sourcePanel.getComponents();
         for (java.awt.Component component : components) {
             if (component instanceof JButton button) {
                 // reactivam butonul
                 button.setEnabled(true);
-                
+
                 // mutam butonul
                 sourcePanel.remove(button);
                 destinationPanel.add(button);
-                
+
                 // dezactivam butoanele invalide in panoul de destinatie
-                String buttonName=button.getName();
-                if(buttonName!=null && invalidButtonNames.contains(buttonName)){
+                String buttonName = button.getName();
+                if (buttonName != null && invalidButtonNames.contains(buttonName)) {
                     button.setEnabled(false);
                 }
             }
         }
-        
+
         // fortam redesenarea interfetei grafice
         sourcePanel.revalidate();
         sourcePanel.repaint();
@@ -821,4 +839,99 @@ public class SimpleCalculator extends javax.swing.JFrame {
                 null;
         };
     }
+
+    private void setupDistanceCalculator() {
+    // Validare taste (permit doar cifrele și tastele speciale)
+    addNumericKeyListener(jTextField3, jTextField7);
+
+    // Sincronizare bidirecțională
+    addSyncListeners(jTextField3, jTextField7, kilometers -> kilometers / 1.60934); // KM -> Mile
+    addSyncListeners(jTextField7, jTextField3, miles -> miles * 1.60934);          // Mile -> KM
+}
+
+public static void addNumericKeyListener(JTextField... textFields) {
+    java.awt.event.KeyAdapter numericKeyListener = new java.awt.event.KeyAdapter() {
+        @Override
+        public void keyTyped(java.awt.event.KeyEvent evt) {
+            char c = evt.getKeyChar();
+            JTextField source = (JTextField) evt.getSource();
+
+            // Permite doar cifre, separatorul zecimal și tastele speciale
+            if (!Character.isDigit(c) && c != '.' && c != ',' 
+                && c != java.awt.event.KeyEvent.VK_BACK_SPACE 
+                && c != java.awt.event.KeyEvent.VK_DELETE) {
+                evt.consume(); // Ignorăm caracterele invalide
+                return;
+            }
+
+            // Permite doar un singur separator zecimal
+            String text = source.getText();
+            if ((c == '.' || c == ',') && (text.contains(".") || text.contains(","))) {
+                evt.consume(); // Ignorăm al doilea separator
+            }
+        }
+    };
+
+    for (JTextField textField : textFields) {
+        textField.addKeyListener(numericKeyListener);
+    }
+}
+
+
+
+public static void addSyncListeners(JTextField source, JTextField target, java.util.function.Function<Double, Double> converter) {
+    Locale locale = Locale.getDefault(); // Locale-ul sistemului
+    NumberFormat numberFormat = NumberFormat.getNumberInstance(locale);
+    numberFormat.setMaximumFractionDigits(3);
+    numberFormat.setMinimumFractionDigits(3);
+
+    source.getDocument().addDocumentListener(new javax.swing.event.DocumentListener() {
+        @Override
+        public void insertUpdate(javax.swing.event.DocumentEvent e) {
+            sync();
+        }
+
+        @Override
+        public void removeUpdate(javax.swing.event.DocumentEvent e) {
+            sync();
+        }
+
+        @Override
+        public void changedUpdate(javax.swing.event.DocumentEvent e) {
+            sync();
+        }
+
+        private void sync() {
+            if (isUpdating) {
+                return;
+            }
+
+            try {
+                isUpdating = true; // Blocăm modificările recursive
+                String text = source.getText().trim();
+                if (!text.isEmpty()) {
+                    // Conversie din text în număr
+                    Number parsedNumber = numberFormat.parse(text);
+                    double value = parsedNumber.doubleValue();
+
+                    // Conversie logică (KM -> Mile sau invers)
+                    double convertedValue = converter.apply(value);
+
+                    // Afișare cu format local
+                    target.setText(numberFormat.format(convertedValue));
+                } else {
+                    target.setText(""); // Golește dacă textul este gol
+                }
+            } catch (ParseException ex) {
+                target.setText(""); // Ignorăm erorile de conversie
+            } finally {
+                isUpdating = false; // Deblocăm modificările
+            }
+        }
+    });
+}
+
+
+
+
 }
