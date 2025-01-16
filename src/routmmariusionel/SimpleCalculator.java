@@ -5,11 +5,9 @@
 package routmmariusionel;
 
 import java.awt.Frame;
-import java.util.List;
+import java.awt.event.WindowEvent;
 import java.util.Arrays;
-import java.util.Collections;
-import javax.swing.JButton;
-import javax.swing.SwingUtilities;
+import java.util.List;
 import routmmariusionel.resources.LanguageManager;
 
 /**
@@ -19,24 +17,19 @@ import routmmariusionel.resources.LanguageManager;
 public class SimpleCalculator extends javax.swing.JFrame {
 
     // Listele de butoane invalide pentru fiecare tip de calculator
+    // Calculatorul principal va avea afisate toate butoanele
     private final List<String> distanceCalculatorInvalidButtons = Arrays.asList("jButton5", "jButtonAdd");
     private final List<String> temperatureCalculatorInvalidButtons = Arrays.asList("jButton5", "jButtonAdd");
-
+    private String sourceMenu = null;
+    private String destinationMenu = "BasicCalculator";
 
     /**
-     * Creates new form CalculatorSimplu
+     * Creates new form SimpleCalculator
      */
     public SimpleCalculator() {
-//        this.temperatureCalculatorInvalidButtons = Arrays.asList("");
-//        this.distanceCalculatorInvalidButtons = Arrays.asList(jButton5);
         initComponents();
 
-        // Localizarea textelor
-        // initializam mesajele componentelor 
-        // cu stringurile din fisierul de resurse
         LanguageManager.setLanguage("ro");
-
-        // actualizarea propriu-zisa a textelor
         updateAllTexts();
     }
 
@@ -49,56 +42,235 @@ public class SimpleCalculator extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroupCalculatorMenu = new javax.swing.ButtonGroup();
+        jFrameDistanceCalculator = new javax.swing.JFrame();
+        jPanel7 = new javax.swing.JPanel();
+        jPanel8 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        jTextField3 = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jTextField7 = new javax.swing.JTextField();
+        jPanel9 = new javax.swing.JPanel();
+        jFrame2 = new javax.swing.JFrame();
+        jPanel10 = new javax.swing.JPanel();
+        jPanel11 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        jTextField5 = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        jTextField8 = new javax.swing.JTextField();
+        jPanel12 = new javax.swing.JPanel();
         jDialogAboutCalculator = new javax.swing.JDialog();
         jLabelAboutCalculator = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextAreaAboutCalculator = new javax.swing.JTextArea();
         jButtonOK = new javax.swing.JButton();
-        jFrameDistanceCalculator = new javax.swing.JFrame();
+        buttonGroupCalculatorMenu = new javax.swing.ButtonGroup();
+        jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jTextFieldMiles = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jTextFieldKilometers = new javax.swing.JTextField();
-        jPanelDCContainer = new javax.swing.JPanel();
-        jFrameTemperatureCalculator = new javax.swing.JFrame();
-        jPanel3 = new javax.swing.JPanel();
-        jButton6 = new javax.swing.JButton();
-        jPanelSimpleCalculator = new javax.swing.JPanel();
         jTextField1 = new javax.swing.JTextField();
-        jPanelButtons = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
-        jButton21 = new javax.swing.JButton();
-        jButton22 = new javax.swing.JButton();
-        jButton24 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton23 = new javax.swing.JButton();
-        jButton25 = new javax.swing.JButton();
-        jButton26 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jButton27 = new javax.swing.JButton();
-        jButton28 = new javax.swing.JButton();
-        jButton29 = new javax.swing.JButton();
-        jButton30 = new javax.swing.JButton();
-        jButton31 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        jButton32 = new javax.swing.JButton();
-        jButton33 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
-        jButton34 = new javax.swing.JButton();
-        jButton35 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
+        jButton9 = new javax.swing.JButton();
+        jButton10 = new javax.swing.JButton();
+        jButton11 = new javax.swing.JButton();
+        jButton12 = new javax.swing.JButton();
+        jButton13 = new javax.swing.JButton();
+        jButton14 = new javax.swing.JButton();
+        jButton15 = new javax.swing.JButton();
+        jButton16 = new javax.swing.JButton();
+        jButton17 = new javax.swing.JButton();
+        jButton18 = new javax.swing.JButton();
+        jButton19 = new javax.swing.JButton();
+        jButton20 = new javax.swing.JButton();
         jMenuBar = new javax.swing.JMenuBar();
-        jMenuCalculator = new javax.swing.JMenu();
+        jMenuCalculatorRadio = new javax.swing.JMenu();
         jRadioMenuSimpleCalculator = new javax.swing.JRadioButtonMenuItem();
         jRadioMenuDistanceCalculator = new javax.swing.JRadioButtonMenuItem();
         jRadioMenuTemperatureCalculator = new javax.swing.JRadioButtonMenuItem();
-        jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        jSeparator3 = new javax.swing.JPopupMenu.Separator();
         jMenuExit = new javax.swing.JMenuItem();
-        jMenuSettings = new javax.swing.JMenu();
-        jMenuSettingsLanguage = new javax.swing.JMenuItem();
+        jMenuSettings2 = new javax.swing.JMenu();
+        jMenuSettingsLanguage2 = new javax.swing.JMenuItem();
         jMenuAbout = new javax.swing.JMenu();
         jMenuItemAbout = new javax.swing.JMenuItem();
+
+        jFrameDistanceCalculator.addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                closingDistanceCalculator(evt);
+            }
+        });
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel5.setText("Kilometri:");
+
+        jTextField3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel6.setText("Mile:");
+
+        jTextField7.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE))
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField7)))
+                .addContainerGap())
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(41, Short.MAX_VALUE))
+        );
+
+        jPanel9.setLayout(new java.awt.GridLayout(5, 4, 5, 5));
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout jFrameDistanceCalculatorLayout = new javax.swing.GroupLayout(jFrameDistanceCalculator.getContentPane());
+        jFrameDistanceCalculator.getContentPane().setLayout(jFrameDistanceCalculatorLayout);
+        jFrameDistanceCalculatorLayout.setHorizontalGroup(
+            jFrameDistanceCalculatorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jFrameDistanceCalculatorLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jFrameDistanceCalculatorLayout.setVerticalGroup(
+            jFrameDistanceCalculatorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jFrameDistanceCalculatorLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jFrame2.addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                closingTemperatureCalculator(evt);
+            }
+        });
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel7.setText("Celsius:");
+
+        jTextField5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel8.setText("Fahrenheit:");
+
+        jTextField8.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+
+        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
+        jPanel11.setLayout(jPanel11Layout);
+        jPanel11Layout.setHorizontalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel11Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel11Layout.createSequentialGroup()
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField5, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE))
+                    .addGroup(jPanel11Layout.createSequentialGroup()
+                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField8)))
+                .addContainerGap())
+        );
+        jPanel11Layout.setVerticalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel11Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(41, Short.MAX_VALUE))
+        );
+
+        jPanel12.setLayout(new java.awt.GridLayout(5, 4, 5, 5));
+
+        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
+        jPanel10.setLayout(jPanel10Layout);
+        jPanel10Layout.setHorizontalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel10Layout.setVerticalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout jFrame2Layout = new javax.swing.GroupLayout(jFrame2.getContentPane());
+        jFrame2.getContentPane().setLayout(jFrame2Layout);
+        jFrame2Layout.setHorizontalGroup(
+            jFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jFrame2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jFrame2Layout.setVerticalGroup(
+            jFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jFrame2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
 
         jDialogAboutCalculator.setTitle("Despre calculator");
         jDialogAboutCalculator.setAlwaysOnTop(true);
@@ -154,26 +326,10 @@ public class SimpleCalculator extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jFrameDistanceCalculator.addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowClosing(java.awt.event.WindowEvent evt) {
-                closingDistanceCalculator(evt);
-            }
-        });
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Mile");
-
-        jLabel2.setText("Kilometri");
-
-        javax.swing.GroupLayout jPanelDCContainerLayout = new javax.swing.GroupLayout(jPanelDCContainer);
-        jPanelDCContainer.setLayout(jPanelDCContainerLayout);
-        jPanelDCContainerLayout.setHorizontalGroup(
-            jPanelDCContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 367, Short.MAX_VALUE)
-        );
-        jPanelDCContainerLayout.setVerticalGroup(
-            jPanelDCContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 220, Short.MAX_VALUE)
-        );
+        jTextField1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jTextField1.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -181,309 +337,121 @@ public class SimpleCalculator extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanelDCContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextFieldMiles))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextFieldKilometers)))
+                .addComponent(jTextField1)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jTextFieldMiles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextFieldKilometers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanelDCContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        javax.swing.GroupLayout jFrameDistanceCalculatorLayout = new javax.swing.GroupLayout(jFrameDistanceCalculator.getContentPane());
-        jFrameDistanceCalculator.getContentPane().setLayout(jFrameDistanceCalculatorLayout);
-        jFrameDistanceCalculatorLayout.setHorizontalGroup(
-            jFrameDistanceCalculatorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jFrameDistanceCalculatorLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jFrameDistanceCalculatorLayout.setVerticalGroup(
-            jFrameDistanceCalculatorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jFrameDistanceCalculatorLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+        jPanel3.setLayout(new java.awt.GridLayout(5, 4, 5, 5));
 
-        jFrameTemperatureCalculator.addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowClosing(java.awt.event.WindowEvent evt) {
-                closeTemperatureCalculator(evt);
-            }
-        });
-
-        jButton6.setText("Calculator temperartura");
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(226, Short.MAX_VALUE)
-                .addComponent(jButton6)
-                .addContainerGap())
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(259, Short.MAX_VALUE)
-                .addComponent(jButton6)
-                .addContainerGap())
-        );
-
-        javax.swing.GroupLayout jFrameTemperatureCalculatorLayout = new javax.swing.GroupLayout(jFrameTemperatureCalculator.getContentPane());
-        jFrameTemperatureCalculator.getContentPane().setLayout(jFrameTemperatureCalculatorLayout);
-        jFrameTemperatureCalculatorLayout.setHorizontalGroup(
-            jFrameTemperatureCalculatorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jFrameTemperatureCalculatorLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jFrameTemperatureCalculatorLayout.setVerticalGroup(
-            jFrameTemperatureCalculatorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jFrameTemperatureCalculatorLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jTextField1.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
+        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jButton1.setText("C");
-        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton1.setPreferredSize(new java.awt.Dimension(80, 80));
+        jPanel3.add(jButton1);
 
-        jButton21.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
-        jButton21.setText("( )");
-        jButton21.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton21.setPreferredSize(new java.awt.Dimension(80, 80));
+        jButton2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jButton2.setText("( )");
+        jPanel3.add(jButton2);
 
-        jButton22.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
-        jButton22.setText("%");
-        jButton22.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton22.setPreferredSize(new java.awt.Dimension(80, 80));
+        jButton3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jButton3.setText("%");
+        jPanel3.add(jButton3);
 
-        jButton24.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
-        jButton24.setText("/");
-        jButton24.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton24.setPreferredSize(new java.awt.Dimension(80, 80));
+        jButton4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jButton4.setText("/");
+        jPanel3.add(jButton4);
 
-        jButton2.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
-        jButton2.setText("7");
-        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton2.setPreferredSize(new java.awt.Dimension(80, 80));
+        jButton5.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jButton5.setText("7");
+        jPanel3.add(jButton5);
 
-        jButton23.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
-        jButton23.setText("8");
-        jButton23.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton23.setPreferredSize(new java.awt.Dimension(80, 80));
+        jButton6.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jButton6.setText("8");
+        jPanel3.add(jButton6);
 
-        jButton25.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
-        jButton25.setText("9");
-        jButton25.setToolTipText("");
-        jButton25.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton25.setPreferredSize(new java.awt.Dimension(80, 80));
+        jButton7.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jButton7.setText("9");
+        jPanel3.add(jButton7);
 
-        jButton26.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
-        jButton26.setText("X");
-        jButton26.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton26.setName("multiply"); // NOI18N
-        jButton26.setPreferredSize(new java.awt.Dimension(80, 80));
+        jButton8.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jButton8.setText("X");
+        jPanel3.add(jButton8);
 
-        jButton3.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
-        jButton3.setText("4");
-        jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton3.setPreferredSize(new java.awt.Dimension(80, 80));
+        jButton9.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jButton9.setText("4");
+        jPanel3.add(jButton9);
 
-        jButton27.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
-        jButton27.setText("5");
-        jButton27.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton27.setPreferredSize(new java.awt.Dimension(80, 80));
+        jButton10.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jButton10.setText("5");
+        jPanel3.add(jButton10);
 
-        jButton28.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
-        jButton28.setText("6");
-        jButton28.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton28.setPreferredSize(new java.awt.Dimension(80, 80));
+        jButton11.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jButton11.setText("6");
+        jPanel3.add(jButton11);
 
-        jButton29.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
-        jButton29.setText("-");
-        jButton29.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton29.setPreferredSize(new java.awt.Dimension(80, 80));
+        jButton12.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jButton12.setText("-");
+        jPanel3.add(jButton12);
 
-        jButton30.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
-        jButton30.setText("+");
-        jButton30.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton30.setPreferredSize(new java.awt.Dimension(80, 80));
+        jButton13.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jButton13.setText("1");
+        jPanel3.add(jButton13);
 
-        jButton31.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
-        jButton31.setText("3");
-        jButton31.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton31.setPreferredSize(new java.awt.Dimension(80, 80));
+        jButton14.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jButton14.setText("2");
+        jPanel3.add(jButton14);
 
-        jButton4.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
-        jButton4.setText("1");
-        jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton4.setPreferredSize(new java.awt.Dimension(80, 80));
+        jButton15.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jButton15.setText("3");
+        jPanel3.add(jButton15);
 
-        jButton32.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
-        jButton32.setText("2");
-        jButton32.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton32.setPreferredSize(new java.awt.Dimension(80, 80));
+        jButton16.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jButton16.setText("+");
+        jPanel3.add(jButton16);
 
-        jButton33.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
-        jButton33.setText("=");
-        jButton33.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton33.setPreferredSize(new java.awt.Dimension(80, 80));
+        jButton17.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jButton17.setText("+/-");
+        jPanel3.add(jButton17);
 
-        jButton5.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
-        jButton5.setText("+/-");
-        jButton5.setActionCommand("");
-        jButton5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton5.setName("jButton5"); // NOI18N
-        jButton5.setPreferredSize(new java.awt.Dimension(80, 80));
+        jButton18.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jButton18.setText("0");
+        jPanel3.add(jButton18);
 
-        jButton34.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
-        jButton34.setText("0");
-        jButton34.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton34.setPreferredSize(new java.awt.Dimension(80, 80));
+        jButton19.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jButton19.setText(",");
+        jButton19.setToolTipText("");
+        jPanel3.add(jButton19);
 
-        jButton35.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
-        jButton35.setText(",");
-        jButton35.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton35.setPreferredSize(new java.awt.Dimension(80, 80));
+        jButton20.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jButton20.setText("=");
+        jPanel3.add(jButton20);
 
-        javax.swing.GroupLayout jPanelButtonsLayout = new javax.swing.GroupLayout(jPanelButtons);
-        jPanelButtons.setLayout(jPanelButtonsLayout);
-        jPanelButtonsLayout.setHorizontalGroup(
-            jPanelButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelButtonsLayout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanelButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelButtonsLayout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton21, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton22, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton24, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE))
-                    .addGroup(jPanelButtonsLayout.createSequentialGroup()
-                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton23, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton25, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton26, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE))
-                    .addGroup(jPanelButtonsLayout.createSequentialGroup()
-                        .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton27, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton28, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton29, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE))
-                    .addGroup(jPanelButtonsLayout.createSequentialGroup()
-                        .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton32, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton31, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton30, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE))
-                    .addGroup(jPanelButtonsLayout.createSequentialGroup()
-                        .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton34, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton35, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton33, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 312, Short.MAX_VALUE))
                 .addContainerGap())
         );
-        jPanelButtonsLayout.setVerticalGroup(
-            jPanelButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelButtonsLayout.createSequentialGroup()
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanelButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanelButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton26, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanelButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton27, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton28, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanelButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton32, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton31, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton30, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanelButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton34, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton35, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton33, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 407, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        javax.swing.GroupLayout jPanelSimpleCalculatorLayout = new javax.swing.GroupLayout(jPanelSimpleCalculator);
-        jPanelSimpleCalculator.setLayout(jPanelSimpleCalculatorLayout);
-        jPanelSimpleCalculatorLayout.setHorizontalGroup(
-            jPanelSimpleCalculatorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelSimpleCalculatorLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanelSimpleCalculatorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanelButtons, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField1))
-                .addContainerGap())
-        );
-        jPanelSimpleCalculatorLayout.setVerticalGroup(
-            jPanelSimpleCalculatorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelSimpleCalculatorLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jTextField1)
-                .addGap(18, 18, 18)
-                .addComponent(jPanelButtons, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(32, 32, 32))
-        );
-
-        jMenuCalculator.setText("menu.Calculator");
+        jMenuCalculatorRadio.setText("menu.Calculator");
 
         buttonGroupCalculatorMenu.add(jRadioMenuSimpleCalculator);
         jRadioMenuSimpleCalculator.setSelected(true);
@@ -493,7 +461,7 @@ public class SimpleCalculator extends javax.swing.JFrame {
                 jRadioMenuSimpleCalculatorActionPerformed(evt);
             }
         });
-        jMenuCalculator.add(jRadioMenuSimpleCalculator);
+        jMenuCalculatorRadio.add(jRadioMenuSimpleCalculator);
 
         buttonGroupCalculatorMenu.add(jRadioMenuDistanceCalculator);
         jRadioMenuDistanceCalculator.setText("menu.Calculator.DistanceCalculator");
@@ -502,7 +470,7 @@ public class SimpleCalculator extends javax.swing.JFrame {
                 jRadioMenuDistanceCalculatorActionPerformed(evt);
             }
         });
-        jMenuCalculator.add(jRadioMenuDistanceCalculator);
+        jMenuCalculatorRadio.add(jRadioMenuDistanceCalculator);
 
         buttonGroupCalculatorMenu.add(jRadioMenuTemperatureCalculator);
         jRadioMenuTemperatureCalculator.setText("menu.Calculator.TemperatureConvertor");
@@ -511,8 +479,8 @@ public class SimpleCalculator extends javax.swing.JFrame {
                 jRadioMenuTemperatureCalculatorActionPerformed(evt);
             }
         });
-        jMenuCalculator.add(jRadioMenuTemperatureCalculator);
-        jMenuCalculator.add(jSeparator1);
+        jMenuCalculatorRadio.add(jRadioMenuTemperatureCalculator);
+        jMenuCalculatorRadio.add(jSeparator3);
 
         jMenuExit.setText("menu.Calculator.Exit");
         jMenuExit.addActionListener(new java.awt.event.ActionListener() {
@@ -520,16 +488,16 @@ public class SimpleCalculator extends javax.swing.JFrame {
                 jMenuExitActionPerformed(evt);
             }
         });
-        jMenuCalculator.add(jMenuExit);
+        jMenuCalculatorRadio.add(jMenuExit);
 
-        jMenuBar.add(jMenuCalculator);
+        jMenuBar.add(jMenuCalculatorRadio);
 
-        jMenuSettings.setText("menu.Settings");
+        jMenuSettings2.setText("menu.Settings");
 
-        jMenuSettingsLanguage.setText("Limba");
-        jMenuSettings.add(jMenuSettingsLanguage);
+        jMenuSettingsLanguage2.setText("Limba");
+        jMenuSettings2.add(jMenuSettingsLanguage2);
 
-        jMenuBar.add(jMenuSettings);
+        jMenuBar.add(jMenuSettings2);
 
         jMenuAbout.setText("menu.About");
 
@@ -551,30 +519,77 @@ public class SimpleCalculator extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanelSimpleCalculator, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanelSimpleCalculator, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuExitActionPerformed
-        // Exit from application
-        // este evident ca vreau sa iesim si puteam iesi cu System.exit(0);
-        // dar ca toata lumea sa fie fericita si sa folosim evenimentul, am simulat apasarea butonului de X a ferestrei
-        if (evt.getSource() == jMenuExit) {
-            dispatchEvent(new java.awt.event.WindowEvent(this, java.awt.event.WindowEvent.WINDOW_CLOSING));
+    private void jRadioMenuSimpleCalculatorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioMenuSimpleCalculatorActionPerformed
+        // actualizam sursa si destinatia
+        sourceMenu = destinationMenu;
+        destinationMenu = "BasicCalculator";
+
+        if (sourceMenu == destinationMenu) {
+            return;
         }
+        
+        this.setJMenuBar(this.getJMenuBar());
+        hideAllWindows();
+        this.pack();
+
+        moveButtons(sourceMenu, destinationMenu);
+        
+        this.setVisible(true);
+    }//GEN-LAST:event_jRadioMenuSimpleCalculatorActionPerformed
+
+    private void jRadioMenuDistanceCalculatorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioMenuDistanceCalculatorActionPerformed
+        // actualizam sursa si destinatia
+        sourceMenu = destinationMenu;
+        destinationMenu = "DistanceCalculator";
+        
+        if(sourceMenu==destinationMenu){
+            return;
+        }
+        
+        jFrameDistanceCalculator.setJMenuBar(this.jMenuBar);
+        jFrameDistanceCalculator.pack();
+        hideAllWindows();
+
+        moveButtons(sourceMenu, destinationMenu);
+        
+        jFrameDistanceCalculator.setVisible(true);
+    }//GEN-LAST:event_jRadioMenuDistanceCalculatorActionPerformed
+
+    private void jRadioMenuTemperatureCalculatorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioMenuTemperatureCalculatorActionPerformed
+        // actualizam sursa si destinatia
+        sourceMenu = destinationMenu;
+        destinationMenu = "TemperatureCalculator";
+        
+        if(sourceMenu==destinationMenu){
+//            return;
+        }
+        
+        jFrame2.setJMenuBar(this.jMenuBar);
+        jFrame2.pack();
+        hideAllWindows();
+
+        moveButtons(sourceMenu, destinationMenu);
+        jFrame2.setVisible(true);
+    }//GEN-LAST:event_jRadioMenuTemperatureCalculatorActionPerformed
+
+    private void jMenuExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuExitActionPerformed
+        dispatchEvent(new java.awt.event.WindowEvent(this, java.awt.event.WindowEvent.WINDOW_CLOSING));
     }//GEN-LAST:event_jMenuExitActionPerformed
 
     private void jMenuItemAboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAboutActionPerformed
-        // afisam modal fereastrs de dialog AboutCalculator
         jDialogAboutCalculator.pack();
         jDialogAboutCalculator.setVisible(true);
     }//GEN-LAST:event_jMenuItemAboutActionPerformed
@@ -584,51 +599,14 @@ public class SimpleCalculator extends javax.swing.JFrame {
         jDialogAboutCalculator.dispose();
     }//GEN-LAST:event_jButtonOKActionPerformed
 
-    private void jRadioMenuDistanceCalculatorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioMenuDistanceCalculatorActionPerformed
-        // ascundem toate ferestrele
-        hideAllWindows();
-        
-        // ne asigram ca mutam meniul principal in fereastra DistanceCalculator
-        jFrameDistanceCalculator.setJMenuBar(this.getJMenuBar());
-        jFrameDistanceCalculator.pack();
-
-        // afisam calculatorul de distanta
-        jFrameDistanceCalculator.setVisible(true);
-    }//GEN-LAST:event_jRadioMenuDistanceCalculatorActionPerformed
-
-    private void jRadioMenuSimpleCalculatorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioMenuSimpleCalculatorActionPerformed
-        // ascundem toate ferestrele
-        hideAllWindows();
-        
-        // ne asiguram ca avem meniul principal in fereastra SimpleCalculator
-        this.setJMenuBar(this.getJMenuBar());
-        this.pack();
-        
-        // afisam calculatorul simplu
-        this.setVisible(true);
-    }//GEN-LAST:event_jRadioMenuSimpleCalculatorActionPerformed
-
-    private void jRadioMenuTemperatureCalculatorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioMenuTemperatureCalculatorActionPerformed
-        // ascundem toate ferestrele
-        hideAllWindows();
-        
-        // ne asigram ca mutam meniul principal in fereastra TemperatureCalculator
-        jFrameTemperatureCalculator.setJMenuBar(this.getJMenuBar());
-        jFrameTemperatureCalculator.pack();
-
-        // afisam calculatorul de distanta
-        jFrameTemperatureCalculator.setVisible(true);
-    }//GEN-LAST:event_jRadioMenuTemperatureCalculatorActionPerformed
-
     private void closingDistanceCalculator(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_closingDistanceCalculator
         // trebuie sa iesim din aplicatie
         dispatchEvent(new java.awt.event.WindowEvent(this, java.awt.event.WindowEvent.WINDOW_CLOSING));
     }//GEN-LAST:event_closingDistanceCalculator
 
-    private void closeTemperatureCalculator(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_closeTemperatureCalculator
-        // trebuie sa iesim din aplicatie
+    private void closingTemperatureCalculator(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_closingTemperatureCalculator
         dispatchEvent(new java.awt.event.WindowEvent(this, java.awt.event.WindowEvent.WINDOW_CLOSING));
-    }//GEN-LAST:event_closeTemperatureCalculator
+    }//GEN-LAST:event_closingTemperatureCalculator
 
     /**
      * @param args the command line arguments
@@ -656,7 +634,6 @@ public class SimpleCalculator extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(SimpleCalculator.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -669,59 +646,65 @@ public class SimpleCalculator extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroupCalculatorMenu;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton10;
+    private javax.swing.JButton jButton11;
+    private javax.swing.JButton jButton12;
+    private javax.swing.JButton jButton13;
+    private javax.swing.JButton jButton14;
+    private javax.swing.JButton jButton15;
+    private javax.swing.JButton jButton16;
+    private javax.swing.JButton jButton17;
+    private javax.swing.JButton jButton18;
+    private javax.swing.JButton jButton19;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton21;
-    private javax.swing.JButton jButton22;
-    private javax.swing.JButton jButton23;
-    private javax.swing.JButton jButton24;
-    private javax.swing.JButton jButton25;
-    private javax.swing.JButton jButton26;
-    private javax.swing.JButton jButton27;
-    private javax.swing.JButton jButton28;
-    private javax.swing.JButton jButton29;
+    private javax.swing.JButton jButton20;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton30;
-    private javax.swing.JButton jButton31;
-    private javax.swing.JButton jButton32;
-    private javax.swing.JButton jButton33;
-    private javax.swing.JButton jButton34;
-    private javax.swing.JButton jButton35;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     private javax.swing.JButton jButtonOK;
     private javax.swing.JDialog jDialogAboutCalculator;
+    private javax.swing.JFrame jFrame2;
     private javax.swing.JFrame jFrameDistanceCalculator;
-    private javax.swing.JFrame jFrameTemperatureCalculator;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabelAboutCalculator;
     private javax.swing.JMenu jMenuAbout;
     private javax.swing.JMenuBar jMenuBar;
-    private javax.swing.JMenu jMenuCalculator;
+    private javax.swing.JMenu jMenuCalculatorRadio;
     private javax.swing.JMenuItem jMenuExit;
     private javax.swing.JMenuItem jMenuItemAbout;
-    private javax.swing.JMenu jMenuSettings;
-    private javax.swing.JMenuItem jMenuSettingsLanguage;
+    private javax.swing.JMenu jMenuSettings2;
+    private javax.swing.JMenuItem jMenuSettingsLanguage2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanelButtons;
-    private javax.swing.JPanel jPanelDCContainer;
-    private javax.swing.JPanel jPanelSimpleCalculator;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JRadioButtonMenuItem jRadioMenuDistanceCalculator;
     private javax.swing.JRadioButtonMenuItem jRadioMenuSimpleCalculator;
     private javax.swing.JRadioButtonMenuItem jRadioMenuTemperatureCalculator;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JPopupMenu.Separator jSeparator3;
     private javax.swing.JTextArea jTextAreaAboutCalculator;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextFieldKilometers;
-    private javax.swing.JTextField jTextFieldMiles;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField7;
+    private javax.swing.JTextField jTextField8;
     // End of variables declaration//GEN-END:variables
 
     /**
-     * Functie care actualizeaza textele componentelor cu valorile preluate din localizare
-     * TODO trebuie refactorizata si sa includa toate textele
+     *
      */
     private void updateAllTexts() {
         // Actualizăm mai întâi elementele de meniu
@@ -757,7 +740,7 @@ public class SimpleCalculator extends javax.swing.JFrame {
     }
 
     /**
-     * Ascundem toate ferestrele Aplicatiei de Calculator
+     *
      */
     private void hideAllWindows() {
         for (Frame frame : Frame.getFrames()) {
@@ -767,54 +750,8 @@ public class SimpleCalculator extends javax.swing.JFrame {
         }
     }
 
-    private void moveButtons(javax.swing.JPanel sourcePanel, javax.swing.JPanel destinationPanel, String calculatorType) {
-        // Determinăm lista de butoane invalide pe baza tipului de calculator
-    List<String> invalidButtons;
-    if ("DistanceCalculator".equals(calculatorType)) {
-        invalidButtons = distanceCalculatorInvalidButtons;
-    } else if ("TemperatureCalculator".equals(calculatorType)) {
-        invalidButtons = temperatureCalculatorInvalidButtons;
-    } else {
-        invalidButtons = Collections.emptyList(); // Nicio dezactivare pentru calculatorul principal
+    private void moveButtons(String sourceMenu, String destinationMenu) {
+        System.out.println("trebuie sa mutam butoanele");
+        
     }
-
-        // Iterează prin componentele din sourcePanel
-        java.awt.Component[] components = sourcePanel.getComponents();
-        for (java.awt.Component component : components) {
-            if (component instanceof JButton button) {
-                // Reactivăm toate butoanele înainte de mutare
-                button.setEnabled(true);
-
-                // Mutăm butonul în destinationPanel
-                sourcePanel.remove(button);
-                destinationPanel.add(button);
-
-                // Verificăm dacă numele butonului este în lista de butoane invalide
-                String buttonName = button.getName();
-                if (buttonName!=null){
-//                    System.out.println(buttonName);
-                    if(invalidButtons.contains(buttonName)){
-                        button.setEnabled(false);
-                    }
-                }
-            }
-        }
-
-        // Actualizează interfața grafică pentru ambele panouri
-        sourcePanel.revalidate();
-        sourcePanel.repaint();
-        destinationPanel.revalidate();
-        destinationPanel.repaint();
-
-        // Obține fereastra părinte a sourcePanel
-        java.awt.Window sourceWindow = SwingUtilities.getWindowAncestor(sourcePanel);
-        // Obține fereastra părinte a destinationPanel
-        java.awt.Window destinationWindow = SwingUtilities.getWindowAncestor(destinationPanel);
-
-        if (sourceWindow != null && destinationWindow != null) {
-            // Setează dimensiunea ferestrei destinație la dimensiunea ferestrei sursă
-            destinationWindow.setSize(sourceWindow.getSize());
-        }
-    }
-
 }
