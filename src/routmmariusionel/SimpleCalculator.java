@@ -7,7 +7,10 @@ package routmmariusionel;
 import java.awt.Frame;
 import java.awt.event.WindowEvent;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import javax.swing.JButton;
+import javax.swing.SwingUtilities;
 import routmmariusionel.resources.LanguageManager;
 
 /**
@@ -18,8 +21,8 @@ public class SimpleCalculator extends javax.swing.JFrame {
 
     // Listele de butoane invalide pentru fiecare tip de calculator
     // Calculatorul principal va avea afisate toate butoanele
-    private final List<String> distanceCalculatorInvalidButtons = Arrays.asList("jButton5", "jButtonAdd");
-    private final List<String> temperatureCalculatorInvalidButtons = Arrays.asList("jButton5", "jButtonAdd");
+    private final List<String> distanceCalculatorInvalidButtons = Arrays.asList("jButton8", "jButtonAdd");
+    private final List<String> temperatureCalculatorInvalidButtons = Arrays.asList("jButton8", "jButtonAdd");
     private String sourceMenu = null;
     private String destinationMenu = "BasicCalculator";
 
@@ -49,15 +52,15 @@ public class SimpleCalculator extends javax.swing.JFrame {
         jTextField3 = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jTextField7 = new javax.swing.JTextField();
-        jPanel9 = new javax.swing.JPanel();
-        jFrame2 = new javax.swing.JFrame();
+        jPanelDistanceCalcButtons = new javax.swing.JPanel();
+        jFrameTemperatureCalculator = new javax.swing.JFrame();
         jPanel10 = new javax.swing.JPanel();
         jPanel11 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jTextField5 = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jTextField8 = new javax.swing.JTextField();
-        jPanel12 = new javax.swing.JPanel();
+        jPanelTemperatureCalcButtons = new javax.swing.JPanel();
         jDialogAboutCalculator = new javax.swing.JDialog();
         jLabelAboutCalculator = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -67,7 +70,7 @@ public class SimpleCalculator extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jTextField1 = new javax.swing.JTextField();
-        jPanel3 = new javax.swing.JPanel();
+        jPanelBasicCalcButtons = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -147,7 +150,7 @@ public class SimpleCalculator extends javax.swing.JFrame {
                 .addContainerGap(41, Short.MAX_VALUE))
         );
 
-        jPanel9.setLayout(new java.awt.GridLayout(5, 4, 5, 5));
+        jPanelDistanceCalcButtons.setLayout(new java.awt.GridLayout(5, 4, 5, 5));
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -157,7 +160,7 @@ public class SimpleCalculator extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanelDistanceCalcButtons, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel7Layout.setVerticalGroup(
@@ -166,7 +169,7 @@ public class SimpleCalculator extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE)
+                .addComponent(jPanelDistanceCalcButtons, javax.swing.GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -186,7 +189,7 @@ public class SimpleCalculator extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jFrame2.addWindowListener(new java.awt.event.WindowAdapter() {
+        jFrameTemperatureCalculator.addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 closingTemperatureCalculator(evt);
             }
@@ -233,7 +236,7 @@ public class SimpleCalculator extends javax.swing.JFrame {
                 .addContainerGap(41, Short.MAX_VALUE))
         );
 
-        jPanel12.setLayout(new java.awt.GridLayout(5, 4, 5, 5));
+        jPanelTemperatureCalcButtons.setLayout(new java.awt.GridLayout(5, 4, 5, 5));
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
@@ -243,7 +246,7 @@ public class SimpleCalculator extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanelTemperatureCalcButtons, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel10Layout.setVerticalGroup(
@@ -252,21 +255,21 @@ public class SimpleCalculator extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE)
+                .addComponent(jPanelTemperatureCalcButtons, javax.swing.GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        javax.swing.GroupLayout jFrame2Layout = new javax.swing.GroupLayout(jFrame2.getContentPane());
-        jFrame2.getContentPane().setLayout(jFrame2Layout);
-        jFrame2Layout.setHorizontalGroup(
-            jFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jFrame2Layout.createSequentialGroup()
+        javax.swing.GroupLayout jFrameTemperatureCalculatorLayout = new javax.swing.GroupLayout(jFrameTemperatureCalculator.getContentPane());
+        jFrameTemperatureCalculator.getContentPane().setLayout(jFrameTemperatureCalculatorLayout);
+        jFrameTemperatureCalculatorLayout.setHorizontalGroup(
+            jFrameTemperatureCalculatorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jFrameTemperatureCalculatorLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jFrame2Layout.setVerticalGroup(
-            jFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jFrame2Layout.createSequentialGroup()
+        jFrameTemperatureCalculatorLayout.setVerticalGroup(
+            jFrameTemperatureCalculatorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jFrameTemperatureCalculatorLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -347,88 +350,89 @@ public class SimpleCalculator extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel3.setLayout(new java.awt.GridLayout(5, 4, 5, 5));
+        jPanelBasicCalcButtons.setLayout(new java.awt.GridLayout(5, 4, 5, 5));
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jButton1.setText("C");
-        jPanel3.add(jButton1);
+        jPanelBasicCalcButtons.add(jButton1);
 
         jButton2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jButton2.setText("( )");
-        jPanel3.add(jButton2);
+        jPanelBasicCalcButtons.add(jButton2);
 
         jButton3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jButton3.setText("%");
-        jPanel3.add(jButton3);
+        jPanelBasicCalcButtons.add(jButton3);
 
         jButton4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jButton4.setText("/");
-        jPanel3.add(jButton4);
+        jPanelBasicCalcButtons.add(jButton4);
 
         jButton5.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jButton5.setText("7");
-        jPanel3.add(jButton5);
+        jPanelBasicCalcButtons.add(jButton5);
 
         jButton6.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jButton6.setText("8");
-        jPanel3.add(jButton6);
+        jPanelBasicCalcButtons.add(jButton6);
 
         jButton7.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jButton7.setText("9");
-        jPanel3.add(jButton7);
+        jPanelBasicCalcButtons.add(jButton7);
 
         jButton8.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jButton8.setText("X");
-        jPanel3.add(jButton8);
+        jButton8.setName("jButton8"); // NOI18N
+        jPanelBasicCalcButtons.add(jButton8);
 
         jButton9.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jButton9.setText("4");
-        jPanel3.add(jButton9);
+        jPanelBasicCalcButtons.add(jButton9);
 
         jButton10.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jButton10.setText("5");
-        jPanel3.add(jButton10);
+        jPanelBasicCalcButtons.add(jButton10);
 
         jButton11.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jButton11.setText("6");
-        jPanel3.add(jButton11);
+        jPanelBasicCalcButtons.add(jButton11);
 
         jButton12.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jButton12.setText("-");
-        jPanel3.add(jButton12);
+        jPanelBasicCalcButtons.add(jButton12);
 
         jButton13.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jButton13.setText("1");
-        jPanel3.add(jButton13);
+        jPanelBasicCalcButtons.add(jButton13);
 
         jButton14.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jButton14.setText("2");
-        jPanel3.add(jButton14);
+        jPanelBasicCalcButtons.add(jButton14);
 
         jButton15.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jButton15.setText("3");
-        jPanel3.add(jButton15);
+        jPanelBasicCalcButtons.add(jButton15);
 
         jButton16.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jButton16.setText("+");
-        jPanel3.add(jButton16);
+        jPanelBasicCalcButtons.add(jButton16);
 
         jButton17.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jButton17.setText("+/-");
-        jPanel3.add(jButton17);
+        jPanelBasicCalcButtons.add(jButton17);
 
         jButton18.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jButton18.setText("0");
-        jPanel3.add(jButton18);
+        jPanelBasicCalcButtons.add(jButton18);
 
         jButton19.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jButton19.setText(",");
         jButton19.setToolTipText("");
-        jPanel3.add(jButton19);
+        jPanelBasicCalcButtons.add(jButton19);
 
         jButton20.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jButton20.setText("=");
-        jPanel3.add(jButton20);
+        jPanelBasicCalcButtons.add(jButton20);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -438,7 +442,7 @@ public class SimpleCalculator extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 312, Short.MAX_VALUE))
+                    .addComponent(jPanelBasicCalcButtons, javax.swing.GroupLayout.DEFAULT_SIZE, 312, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -447,7 +451,7 @@ public class SimpleCalculator extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 407, Short.MAX_VALUE)
+                .addComponent(jPanelBasicCalcButtons, javax.swing.GroupLayout.DEFAULT_SIZE, 407, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -537,7 +541,7 @@ public class SimpleCalculator extends javax.swing.JFrame {
         sourceMenu = destinationMenu;
         destinationMenu = "BasicCalculator";
 
-        if (sourceMenu == destinationMenu) {
+        if (sourceMenu.equals(destinationMenu)) {
             return;
         }
         
@@ -545,7 +549,7 @@ public class SimpleCalculator extends javax.swing.JFrame {
         hideAllWindows();
         this.pack();
 
-        moveButtons(sourceMenu, destinationMenu);
+        moveCalcButtons(sourceMenu, destinationMenu);
         
         this.setVisible(true);
     }//GEN-LAST:event_jRadioMenuSimpleCalculatorActionPerformed
@@ -555,7 +559,7 @@ public class SimpleCalculator extends javax.swing.JFrame {
         sourceMenu = destinationMenu;
         destinationMenu = "DistanceCalculator";
         
-        if(sourceMenu==destinationMenu){
+        if(sourceMenu.equals(destinationMenu)){
             return;
         }
         
@@ -563,7 +567,7 @@ public class SimpleCalculator extends javax.swing.JFrame {
         jFrameDistanceCalculator.pack();
         hideAllWindows();
 
-        moveButtons(sourceMenu, destinationMenu);
+        moveCalcButtons(sourceMenu, destinationMenu);
         
         jFrameDistanceCalculator.setVisible(true);
     }//GEN-LAST:event_jRadioMenuDistanceCalculatorActionPerformed
@@ -573,16 +577,16 @@ public class SimpleCalculator extends javax.swing.JFrame {
         sourceMenu = destinationMenu;
         destinationMenu = "TemperatureCalculator";
         
-        if(sourceMenu==destinationMenu){
-//            return;
+        if(sourceMenu.equals(destinationMenu)){
+            return;
         }
         
-        jFrame2.setJMenuBar(this.jMenuBar);
-        jFrame2.pack();
+        jFrameTemperatureCalculator.setJMenuBar(this.jMenuBar);
+        jFrameTemperatureCalculator.pack();
         hideAllWindows();
 
-        moveButtons(sourceMenu, destinationMenu);
-        jFrame2.setVisible(true);
+        moveCalcButtons(sourceMenu, destinationMenu);
+        jFrameTemperatureCalculator.setVisible(true);
     }//GEN-LAST:event_jRadioMenuTemperatureCalculatorActionPerformed
 
     private void jMenuExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuExitActionPerformed
@@ -667,8 +671,8 @@ public class SimpleCalculator extends javax.swing.JFrame {
     private javax.swing.JButton jButton9;
     private javax.swing.JButton jButtonOK;
     private javax.swing.JDialog jDialogAboutCalculator;
-    private javax.swing.JFrame jFrame2;
     private javax.swing.JFrame jFrameDistanceCalculator;
+    private javax.swing.JFrame jFrameTemperatureCalculator;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -684,12 +688,12 @@ public class SimpleCalculator extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
-    private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
+    private javax.swing.JPanel jPanelBasicCalcButtons;
+    private javax.swing.JPanel jPanelDistanceCalcButtons;
+    private javax.swing.JPanel jPanelTemperatureCalcButtons;
     private javax.swing.JRadioButtonMenuItem jRadioMenuDistanceCalculator;
     private javax.swing.JRadioButtonMenuItem jRadioMenuSimpleCalculator;
     private javax.swing.JRadioButtonMenuItem jRadioMenuTemperatureCalculator;
@@ -750,8 +754,71 @@ public class SimpleCalculator extends javax.swing.JFrame {
         }
     }
 
-    private void moveButtons(String sourceMenu, String destinationMenu) {
-        System.out.println("trebuie sa mutam butoanele");
+        /**
+     * Mutam butoanele din calculatorul curent in noul calculator
+     * @param sourceMenu
+     * @param destinationMenu 
+     */
+    private void moveCalcButtons(String sourceMenu, String destinationMenu) {
+        //System.out.println("sourceMenu: " + sourceMenu + " destinationMenu: " + destinationMenu);
+        // determinam panoul susrsa si panoul destinatie pentru a muta butoanele calculatorului
+        if (sourceMenu == destinationMenu) {
+            return;
+        }
+        javax.swing.JPanel sourcePanel = getPanelButtonsForMenu(sourceMenu);
+        javax.swing.JPanel destinationPanel = getPanelButtonsForMenu(destinationMenu);
         
+
+        // determinam lista de butoane care trebuiesc inactivate
+        List<String> invalidButtonNames = switch (destinationMenu) {
+            case "DistanceCalculator" ->
+                distanceCalculatorInvalidButtons;
+            case "TemperatureCalculator" ->
+                temperatureCalculatorInvalidButtons;
+            default ->
+                // Nici o dezactivare pentru calculatorul principal
+                Collections.emptyList();
+        };
+        
+        // mutam butoanele calculatorului din panoul sursa in cel de destinatie
+        java.awt.Component[] components = sourcePanel.getComponents();
+        for (java.awt.Component component : components) {
+            if (component instanceof JButton button) {
+                // reactivam butonul
+                button.setEnabled(true);
+                
+                // mutam butonul
+                sourcePanel.remove(button);
+                destinationPanel.add(button);
+                
+                // dezactivam butoanele invalide in panoul de destinatie
+                String buttonName=button.getName();
+                if(buttonName!=null && invalidButtonNames.contains(buttonName)){
+                    button.setEnabled(false);
+                }
+            }
+        }
+        
+        // fortam redesenarea interfetei grafice
+        sourcePanel.revalidate();
+        sourcePanel.repaint();
+        destinationPanel.revalidate();
+        destinationPanel.repaint();
+
+        java.awt.Window destinationWindow = SwingUtilities.getWindowAncestor(destinationPanel);
+        destinationWindow.setSize(SwingUtilities.getWindowAncestor(sourcePanel).getSize());
+    }
+
+    private javax.swing.JPanel getPanelButtonsForMenu(String menuName) {
+        return switch (menuName) {
+            case "BasicCalculator" ->
+                jPanelBasicCalcButtons;
+            case "DistanceCalculator" ->
+                jPanelDistanceCalcButtons;
+            case "TemperatureCalculator" ->
+                jPanelTemperatureCalcButtons;
+            default ->
+                null;
+        };
     }
 }
