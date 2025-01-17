@@ -35,6 +35,12 @@ Este un calculator simplu care are 3 componente:
 - Butoanele mutate sunt dezactivate/reactivate in functie de contextul calculatorului.
 
 ## Screenshots:
-[Redimensionarea fluida a interfetei grafice](https://github.com/lightvision/SimpleCalculator/blob/main/ApplicationResizing.png)
+[Redimensionarea fluida a interfetei grafice](https://github.com/lightvision/SimpleCalculator/blob/main/ApplicationResizing.png?raw=true)
+
+[foo](ApplicationResizing.png?raw=true)
+
+[foo](ApplicationResizing.png)
+
 [Calcularea distantei](https://github.com/lightvision/SimpleCalculator/blob/main/DistanceCalculator.png)
-[Conversia temperaturii](https://github.com/lightvision/SimpleCalculator/blob/main/TemperatureConvertor.png0
+
+[Conversia temperaturii](https://github.com/lightvision/SimpleCalculator/blob/main/TemperatureConvertor.png)
