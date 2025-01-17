@@ -1,8 +1,10 @@
 # Simple Calculator Project
 
->WARNING: This is a poject for Proiectarea Interfetelor Utilizator Homework
->DO NOT USE IT IN PRODUCTION
->ALL RIGHTS RESERVED
+> WARNING: This is a poject for Proiectarea Interfetelor Utilizator Homework
+
+> DO NOT USE IT IN PRODUCTION
+
+> ALL RIGHTS RESERVED
 
 ---
 
@@ -32,3 +34,7 @@ Este un calculator simplu care are 3 componente:
 - Layout-ul este complex iar butoanele sunt desenate 1 singura data dupa care sunt mutate pe fiecare calculator;
 - Butoanele mutate sunt dezactivate/reactivate in functie de contextul calculatorului.
 
+## Screenshots:
+[Redimensionarea fluida a interfetei grafice](https://github.com/lightvision/SimpleCalculator/blob/main/ApplicationResizing.png)
+[Calcularea distantei](https://github.com/lightvision/SimpleCalculator/blob/main/DistanceCalculator.png)
+[Conversia temperaturii](https://github.com/lightvision/SimpleCalculator/blob/main/TemperatureConvertor.png0
