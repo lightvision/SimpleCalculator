@@ -6,6 +6,8 @@
 
 > ALL RIGHTS RESERVED
 
+> Vezi repo parinte: [Proiectarea Interfetelor Utilizator](https://github.com/lightvision/Proiectarea_Interfetelor_Utilizator)
+
 ---
 
 Acest proiect este implementat in Apache Netbeans IDE folosind Java Swing.
@@ -35,12 +37,6 @@ Este un calculator simplu care are 3 componente:
 - Butoanele mutate sunt dezactivate/reactivate in functie de contextul calculatorului.
 
 ## Screenshots:
-[Redimensionarea fluida a interfetei grafice](https://github.com/lightvision/SimpleCalculator/blob/main/ApplicationResizing.png?raw=true)
-
-[foo](ApplicationResizing.png?raw=true)
-
-[foo](ApplicationResizing.png)
-
-[Calcularea distantei](https://github.com/lightvision/SimpleCalculator/blob/main/DistanceCalculator.png)
-
-[Conversia temperaturii](https://github.com/lightvision/SimpleCalculator/blob/main/TemperatureConvertor.png)
+- Redimensionarea fluida a interfetei grafice: ![Redimensionarea fluida a interfetei grafice](ApplicationResizing.png)
+- Calcularea distantei: ![Calcularea distantei](DistanceCalculator.png)
+- Conversia temperaturii: ![Conversia temperaturii](TemperatureConvertor.png)
